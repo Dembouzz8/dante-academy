@@ -1,0 +1,821 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image, Picture } from 'astro:assets';
+import Button from '../components/Button.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import VisualPanel from '../components/VisualPanel.astro';
+import FeatureImageCard from '../components/FeatureImageCard.astro';
+import {
+  credibilityItems,
+  directorMessage,
+  pathway,
+  whyDante,
+} from '../data/site';
+import { programmes } from '../data/programmes';
+import { team } from '../data/team';
+import { homepageImages } from '../data/homepageImages';
+---
+
+<BaseLayout
+  title="Dante Football Academy | Ibadan, Nigeria"
+  description="Structured football development for young players aged U10 to U19 in Ibadan, Nigeria."
+>
+  <section class="hero">
+    <Picture
+      class="hero-photo"
+      src={homepageImages.hero.image}
+      alt=""
+      widths={[768, 1024, 1440, 1920]}
+      sizes="100vw"
+      formats={['avif', 'webp']}
+      loading="eager"
+      fetchpriority="high"
+    />
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-lines" aria-hidden="true"></div>
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Dante Football Academy · Ibadan, Nigeria</p><h1>
+          Developing football talent.<br /><em>Building leaders for life.</em>
+        </h1><p class="hero-intro">
+          A structured pathway for young players to grow through purposeful
+          coaching, education, discipline and opportunity.
+        </p><div class="hero-actions">
+          <Button href="/contact/">Contact the Academy</Button><Button
+            href="/programmes/"
+            variant="light">Explore Programmes</Button
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="credibility" aria-label="Academy highlights">
+    <div class="container credibility-grid">
+      {
+        credibilityItems.map((item, index) => (
+          <div>
+            <>
+              <span>0{index + 1}</span>
+              <strong>{item}</strong>
+            </>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+  <section class="section intro">
+    <div class="container split-grid intro-grid">
+      <div class="intro-visual">
+        <VisualPanel
+          label="Purposeful player development"
+          {...homepageImages.academyIntroduction}
+        />
+      </div><div>
+        <SectionHeading
+          eyebrow="More than football"
+          title="A place for talent to take shape"
+        />
+      </div><div class="intro-copy">
+        <p class="large-copy">
+          Dante Football Academy gives young players a disciplined environment
+          to develop their ability, intelligence and character.
+        </p><p>
+          Based in Ibadan, we place football development alongside education and
+          mentorship—preparing every player for the demands of the game and the
+          responsibilities beyond it.
+        </p><Button href="/academy/" variant="section"
+          >Discover the Academy</Button
+        >
+      </div>
+    </div>
+  </section>
+  <section class="section section--navy programmes">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Our programmes"
+        title="Built for every stage of the journey"
+        intro="Three progressive levels support players from their first foundations through advanced preparation."
+        light
+      />
+      <div class="programme-grid">
+        {
+          programmes.map((programme, index) => (
+            <article
+              class="programme-card photo-ready"
+              data-image-slot={programme.id}
+            >
+              <>
+                <div class="programme-top">
+                  <>
+                    <span>0{index + 1}</span>
+                    <span>{programme.ages}</span>
+                  </>
+                </div>
+                <h3>{programme.name}</h3>
+                <p>{programme.description}</p>
+                <a href={`/programmes/#${programme.id}`}>
+                  Explore {programme.name} <span aria-hidden="true">→</span>
+                </a>
+              </>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+  <section class="section why">
+    <div class="container">
+      <SectionHeading
+        eyebrow="The Dante standard"
+        title="Why choose Dante"
+        intro="Our work is shaped by clear standards and a long-term view of player development."
+      /><div class="why-grid">
+        {
+          whyDante.map((item, index) => (
+            <article>
+              <>
+                <span>0{index + 1}</span>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+  <section class="section pathway-section">
+    <div class="container">
+      <div class="section-header">
+        <SectionHeading
+          eyebrow="A purposeful journey"
+          title="The development pathway"
+        />
+        <Button href="/academy/#pathway" variant="section"
+          >See Our Approach</Button
+        >
+      </div>
+      <ol class="pathway">
+        {
+          pathway.map((step, index) => (
+            <li>
+              <>
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <strong>{step}</strong>
+              </>
+            </li>
+          ))
+        }
+      </ol>
+      <div class="pathway-image-slot">
+        <FeatureImageCard
+          {...homepageImages.pathway}
+          label="From Potential to Progression"
+          heading="Every stage has a purpose"
+          description="Each stage strengthens a player’s ability, understanding, confidence and character."
+        />
+      </div>
+    </div>
+  </section>
+  <section class="section section--white inside">
+    <div class="container">
+      <div class="section-header">
+        <SectionHeading
+          eyebrow="Inside Dante"
+          title="Energy. Focus. Togetherness."
+          intro="A glimpse into the environment where young players learn, compete and grow."
+        /><Button href="/gallery/" variant="section">View Gallery</Button>
+      </div><div class="visual-grid">
+        <VisualPanel
+          label="The training ground"
+          variant="gallery"
+          {...homepageImages.insideDante[0]}
+        /><VisualPanel
+          label="The work behind the game"
+          variant="portrait"
+          {...homepageImages.insideDante[1]}
+        /><div class="visual-quote">
+          <span>DA</span><p>Every session is an opportunity to learn.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section message">
+    <div class="container message-grid">
+      <VisualPanel
+        label="Leadership with purpose"
+        variant="portrait"
+        {...homepageImages.director}
+      /><div class="message-copy">
+        <p class="eyebrow">From the Director</p><h2>
+          Building players.<br />Shaping people.
+        </h2>{
+          directorMessage.split('\n\n').map((paragraph) => <p>{paragraph}</p>)
+        }<p class="signature">
+          <strong>Amb. Dada Iseoluwa Akinoluwa</strong><span>Director</span>
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="section section--navy leadership">
+    <div class="container">
+      <div class="section-header">
+        <SectionHeading
+          eyebrow="Our leadership"
+          title="Guided by a committed team"
+          intro="A leadership team working together to support the academy’s sporting and organisational development."
+          light
+        /><Button href="/academy/#team" variant="section">Meet the Team</Button>
+      </div><div class="team-grid">
+        {
+          team.slice(0, 4).map((member, index) => (
+            <article>
+              <>
+                <div
+                  class="team-portrait photo-ready"
+                  data-image-slot="leadership"
+                >
+                  {member.image ? (
+                    <Image
+                      src={member.image}
+                      alt={`Portrait of ${member.name}`}
+                      widths={[320, 480, 640]}
+                      sizes="(max-width: 600px) 50vw, (max-width: 900px) 50vw, 25vw"
+                      loading="lazy"
+                      style={`object-position:${member.objectPosition}`}
+                    />
+                  ) : (
+                    <>
+                      <span>{String(index + 1).padStart(2, '0')}</span>
+                      <b>
+                        {member.name
+                          .split(' ')
+                          .map((word) => word[0])
+                          .slice(0, 2)
+                          .join('')}
+                      </b>
+                    </>
+                  )}
+                  {member.image && (
+                    <span class="dante-diagonal-accent" aria-hidden="true" />
+                  )}
+                </div>
+                <h3>{member.name}</h3>
+                <p>{member.role}</p>
+              </>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+  <section class="contact-cta">
+    <div class="container">
+      <p class="eyebrow">Start the conversation</p><h2>
+        Ready to learn more about Dante?
+      </h2><p>
+        Speak with the academy about our programmes, player development or
+        partnership opportunities.
+      </p><Button href="/contact/" variant="light">Contact the Academy</Button>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+  .hero {
+    position: relative;
+    overflow: hidden;
+    background: var(--navy-950);
+    color: white;
+    min-height: clamp(700px, 76vh, 760px);
+    display: grid;
+    align-items: center;
+  }
+  .hero :global(.hero-photo) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .hero :global(.hero-photo img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 55% center;
+  }
+  .hero-overlay {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(7, 12, 36, 0.08) 55%,
+        rgba(7, 12, 36, 0.82) 100%
+      ),
+      linear-gradient(
+        90deg,
+        rgba(7, 12, 36, 0.98) 0%,
+        rgba(7, 12, 36, 0.87) 34%,
+        rgba(7, 12, 36, 0.38) 66%,
+        rgba(7, 12, 36, 0.16) 100%
+      );
+  }
+  .hero:after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    inset: auto 0 0 0;
+    height: 3px;
+    background: linear-gradient(
+      90deg,
+      var(--orange-500) 0 18%,
+      transparent 18%
+    );
+  }
+  .hero-grid {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: minmax(0, 780px) 1fr;
+    align-items: center;
+    gap: 30px;
+    padding-block: 100px;
+  }
+  .hero h1 {
+    max-width: 760px;
+    margin: 15px 0 25px;
+    font: 800 clamp(4rem, 7vw, 6.8rem)/0.84 'Barlow Condensed';
+    text-transform: uppercase;
+    letter-spacing: -0.035em;
+  }
+  .hero h1 em {
+    color: var(--orange-500);
+    font-style: normal;
+  }
+  .hero-intro {
+    max-width: 630px;
+    color: var(--off-white);
+    font-size: 1.06rem;
+  }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-top: 32px;
+  }
+  .credibility {
+    background: white;
+    border-bottom: 1px solid var(--grey-200);
+  }
+  .credibility-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .credibility-grid div {
+    padding: 22px 18px;
+    border-right: 1px solid var(--grey-200);
+    display: flex;
+    align-items: center;
+    gap: 13px;
+  }
+  .credibility-grid div:first-child {
+    border-left: 1px solid var(--grey-200);
+  }
+  .credibility span {
+    color: var(--orange-500);
+    font-size: 0.65rem;
+    font-weight: 700;
+  }
+  .credibility strong {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .split-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10%;
+    align-items: start;
+  }
+  .intro-grid {
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 3rem 7%;
+    align-items: center;
+  }
+  .intro-visual {
+    grid-row: span 2;
+  }
+  .intro-visual .visual-panel {
+    min-height: 570px;
+  }
+  .large-copy {
+    font: 600 1.55rem/1.45 'Barlow Condensed';
+    text-transform: uppercase;
+  }
+  .intro-copy > .button {
+    margin-top: 20px;
+  }
+  .programme-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: 1px solid #272e4b;
+  }
+  .programme-grid article {
+    position: relative;
+    overflow: hidden;
+    padding: 34px;
+    min-height: 390px;
+    border-right: 1px solid #272e4b;
+    display: flex;
+    flex-direction: column;
+  }
+  .programme-card:after {
+    content: '';
+    position: absolute;
+    inset: auto 0 0;
+    height: 4px;
+    background: var(--orange-500);
+    transform: scaleX(0.2);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+  }
+  .programme-card:hover:after {
+    transform: scaleX(1);
+  }
+  .programme-grid article:last-child {
+    border: 0;
+  }
+  .programme-top {
+    display: flex;
+    justify-content: space-between;
+    color: #8f94a6;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+  }
+  .programme-grid h3 {
+    margin: 70px 0 12px;
+    font: 700 3rem 'Barlow Condensed';
+    text-transform: uppercase;
+  }
+  .programme-grid p {
+    color: #b6bac8;
+    font-size: 0.9rem;
+  }
+  .programme-grid a {
+    margin-top: auto;
+    color: var(--orange-500);
+    font-size: 0.73rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--grey-200);
+    border: 1px solid var(--grey-200);
+  }
+  .why-grid article {
+    background: var(--off-white);
+    padding: 30px;
+    min-height: 270px;
+  }
+  .why-grid span {
+    color: var(--orange-500);
+    font-size: 0.7rem;
+  }
+  .why-grid h3 {
+    margin: 55px 0 10px;
+    font: 700 1.8rem/1 'Barlow Condensed';
+    text-transform: uppercase;
+  }
+  .why-grid p {
+    font-size: 0.85rem;
+    color: var(--grey-600);
+  }
+  .pathway-section {
+    background: #ecebe7;
+  }
+  .pathway-image-slot {
+    margin-top: 50px;
+  }
+  .pathway {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    padding: 0;
+    margin: 50px 0 35px;
+    list-style: none;
+  }
+  .pathway li {
+    position: relative;
+    border-top: 2px solid var(--navy-900);
+    padding: 22px 10px 0;
+  }
+  .pathway li:before {
+    content: '';
+    position: absolute;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--orange-500);
+    top: -7px;
+    left: 0;
+  }
+  .pathway span {
+    display: block;
+    color: var(--orange-500);
+    font-size: 0.65rem;
+  }
+  .pathway strong {
+    display: block;
+    margin-top: 8px;
+    font: 700 1.1rem/1.1 'Barlow Condensed';
+    text-transform: uppercase;
+  }
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  .section-header :global(.section-heading) {
+    margin-bottom: 0;
+  }
+  .section-header > .button {
+    flex: 0 0 auto;
+  }
+  .visual-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 0.8fr;
+    grid-template-rows: 1fr auto;
+    gap: 18px;
+  }
+  .visual-grid > .visual-panel:first-child {
+    grid-row: span 2;
+    min-height: 620px;
+  }
+  .visual-grid > .visual-panel:nth-child(2) {
+    min-height: 390px;
+  }
+  .visual-quote {
+    background: var(--orange-500);
+    color: white;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .visual-quote span {
+    font: 800 3rem 'Barlow Condensed';
+    opacity: 0.5;
+  }
+  .visual-quote p {
+    font: 700 1.2rem 'Barlow Condensed';
+    text-transform: uppercase;
+  }
+  .message {
+    background: #e7e5df;
+  }
+  .message-grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 9%;
+    align-items: center;
+  }
+  .message-grid > .visual-panel {
+    min-height: 0;
+    aspect-ratio: 4/5;
+  }
+  .message-copy h2 {
+    font: 700 clamp(3rem, 6vw, 5rem)/0.9 'Barlow Condensed';
+    text-transform: uppercase;
+  }
+  .message-copy > p {
+    font-size: 0.92rem;
+    color: #4f5462;
+  }
+  .signature {
+    margin-top: 28px;
+    border-left: 3px solid var(--orange-500);
+    padding-left: 16px;
+  }
+  .signature strong,
+  .signature span {
+    display: block;
+  }
+  .signature strong {
+    color: var(--text-dark);
+  }
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .team-portrait {
+    position: relative;
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    background: linear-gradient(
+      150deg,
+      var(--blue-700),
+      var(--navy-900) 55%,
+      var(--purple-700)
+    );
+  }
+  .team-portrait :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .team-portrait:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    background: var(--orange-500);
+    bottom: 0;
+    left: 0;
+    z-index: 3;
+  }
+  .team-portrait > span:not(.dante-diagonal-accent) {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    color: #9ca1b0;
+    font-size: 0.7rem;
+  }
+  .team-portrait b {
+    position: absolute;
+    right: -4%;
+    bottom: -13%;
+    font: 800 10rem 'Barlow Condensed';
+    color: rgba(255, 255, 255, 0.08);
+  }
+  .team-grid h3 {
+    margin: 16px 0 3px;
+    font: 700 1.35rem/1 'Barlow Condensed';
+    text-transform: uppercase;
+  }
+  .team-grid p {
+    margin: 0;
+    color: #a9adba;
+    font-size: 0.76rem;
+  }
+  .contact-cta {
+    background: var(--orange-500);
+    color: white;
+    padding: 78px 0;
+  }
+  .contact-cta .eyebrow {
+    color: var(--navy-950);
+  }
+  .contact-cta h2 {
+    max-width: 820px;
+    margin: 0;
+    font: 800 clamp(3rem, 7vw, 6rem)/0.88 'Barlow Condensed';
+    text-transform: uppercase;
+  }
+  .contact-cta p:not(.eyebrow) {
+    max-width: 580px;
+  }
+  .contact-cta .button {
+    margin-top: 15px;
+  }
+  @media (max-width: 900px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+    .credibility-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .split-grid {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    .intro-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 35px;
+    }
+    .intro-visual {
+      grid-row: auto;
+    }
+    .intro-grid > div:last-child {
+      grid-column: 1 / -1;
+    }
+    .programme-grid {
+      grid-template-columns: 1fr;
+    }
+    .programme-grid article {
+      min-height: 300px;
+      border-right: 0;
+      border-bottom: 1px solid #272e4b;
+    }
+    .programme-grid h3 {
+      margin-top: 40px;
+    }
+    .why-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .pathway {
+      grid-template-columns: 1fr 1fr;
+      gap: 25px 0;
+    }
+    .section-header {
+      display: block;
+      margin-bottom: 40px;
+    }
+    .section-header > .button {
+      margin-top: 24px;
+    }
+    .message-grid {
+      gap: 5%;
+    }
+    .team-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 600px) {
+    .hero {
+      min-height: 760px;
+    }
+    .hero :global(.hero-photo img) {
+      object-position: 52% center;
+    }
+    .hero-overlay {
+      background:
+        linear-gradient(180deg, rgba(7, 12, 36, 0.72), rgba(7, 12, 36, 0.92)),
+        linear-gradient(90deg, rgba(7, 12, 36, 0.88), rgba(7, 12, 36, 0.35));
+    }
+    .hero-grid {
+      padding-block: 76px;
+    }
+    .hero h1 {
+      font-size: clamp(3.35rem, 16vw, 4.1rem);
+    }
+    .hero-actions {
+      align-items: stretch;
+      flex-direction: column;
+    }
+    .hero-actions :global(.button) {
+      width: 100%;
+    }
+    .intro-grid {
+      grid-template-columns: 1fr;
+    }
+    .intro-grid > div:last-child {
+      grid-column: auto;
+    }
+    .intro-visual .visual-panel {
+      min-height: 420px;
+    }
+    .credibility-grid {
+      grid-template-columns: 1fr;
+    }
+    .credibility-grid div {
+      border-left: 1px solid var(--grey-200);
+    }
+    .why-grid {
+      grid-template-columns: 1fr;
+    }
+    .why-grid article {
+      min-height: 220px;
+    }
+    .pathway {
+      grid-template-columns: 1fr;
+    }
+    .pathway li {
+      border-top: 0;
+      border-left: 2px solid var(--navy-900);
+      padding: 0 0 25px 25px;
+    }
+    .pathway li:before {
+      top: 3px;
+      left: -7px;
+    }
+    .section-header > .button {
+      width: 100%;
+    }
+    .visual-grid {
+      grid-template-columns: 1fr;
+    }
+    .visual-grid > .visual-panel:first-child {
+      min-height: 430px;
+      grid-row: auto;
+    }
+    .message-grid {
+      grid-template-columns: 1fr;
+    }
+    .message-grid > .visual-panel {
+      min-height: 0;
+      aspect-ratio: 4/5;
+    }
+    .team-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .team-grid h3 {
+      font-size: 1.05rem;
+    }
+  }
+</style>

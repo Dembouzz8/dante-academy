@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from './Button.astro';
+interface Props {
+  eyebrow: string;
+  title: string;
+  description: string;
+  anchors?: readonly string[];
+}
+const { eyebrow, title, description, anchors = [] } = Astro.props;
+---
+
+<BaseLayout
+  title={`${title} | Dante Football Academy`}
+  description={description}
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">{eyebrow}</p><h1>{title}</h1><p>{description}</p>
+    </div>
+  </section>
+  <section class="shell-content section--white">
+    <div class="container">
+      {anchors.map((anchor) => <span class="anchor-target" id={anchor} />)}
+      <p>
+        This section will be developed in the next project milestone. For
+        programme or partnership enquiries, speak directly with the academy
+        team.
+      </p><Button href="/contact/">Contact the Academy</Button>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .anchor-target {
+    display: block;
+    scroll-margin-top: 2rem;
+  }
+</style>

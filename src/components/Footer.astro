@@ -1,0 +1,56 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/brand/dante-logo.png';
+import { academyLinks } from '../data/navigation';
+import { contact, socialLinks } from '../data/contact';
+import { site } from '../data/site';
+const socials = Object.entries(socialLinks).filter(([, url]) => url);
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand brand--footer" href="/"
+        ><Image src={logo} alt="" width={84} height={84} /><span
+          >Dante <b>Football Academy</b></span
+        ></a
+      >
+      <p>
+        Developing football talent and building confident young people through
+        football, education and character.
+      </p>
+    </div>
+    <div>
+      <h2>Explore</h2><a href="/academy/">About Us</a><a href="/programmes/"
+        >Programmes</a
+      ><a href="/gallery/">Gallery</a><a href="/contact/">Contact</a>
+    </div>
+    <div>
+      <h2>The Academy</h2>{
+        academyLinks.map((item) => <a href={item.href}>{item.label}</a>)
+      }
+    </div>
+    <div>
+      <h2>Get in touch</h2><address>
+        {contact.addressLines.map((line) => <span>{line}</span>)}
+      </address>{
+        contact.phones.map((phone) => <a href={phone.href}>{phone.display}</a>)
+      }<a href={`mailto:${contact.email}`}>{contact.email}</a>
+    </div>
+  </div>
+  {
+    socials.length > 0 && (
+      <div class="container social-links">
+        {socials.map(([name, url]) => (
+          <a href={url}>{name}</a>
+        ))}
+      </div>
+    )
+  }
+  <div class="container footer-bottom">
+    <p>Operated by {site.legalName}</p><p>
+      © {new Date().getFullYear()}
+      {site.name}
+    </p>
+  </div>
+</footer>

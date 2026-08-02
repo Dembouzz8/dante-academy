@@ -1,0 +1,68 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/brand/dante-logo.png';
+import { navigation } from '../data/navigation';
+import Button from './Button.astro';
+const path = Astro.url.pathname;
+---
+
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site-header" data-header>
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="Dante Football Academy home">
+      <Image
+        src={logo}
+        alt="Dante Football Academy"
+        width={64}
+        height={64}
+        loading="eager"
+      />
+      <span>Dante <b>Football Academy</b></span>
+    </a>
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      {
+        navigation.map((item) => (
+          <a class:list={{ active: path === item.href }} href={item.href}>
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+    <Button href="/contact/" class="header-cta">Contact the Academy</Button>
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      aria-label="Open menu"
+    >
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav
+    class="mobile-nav"
+    id="mobile-menu"
+    aria-label="Mobile navigation"
+    hidden
+  >
+    {
+      navigation.map((item) => (
+        <a class:list={{ active: path === item.href }} href={item.href}>
+          {item.label}
+        </a>
+      ))
+    }
+    <Button href="/contact/">Contact the Academy</Button>
+  </nav>
+</header>
+<script>
+  const header = document.querySelector('[data-header]');
+  const button = header?.querySelector<HTMLButtonElement>('.menu-toggle');
+  const menu = header?.querySelector<HTMLElement>('#mobile-menu');
+  button?.addEventListener('click', () => {
+    const open = button.getAttribute('aria-expanded') === 'true';
+    button.setAttribute('aria-expanded', String(!open));
+    button.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
+    if (menu) menu.hidden = open;
+  });
+</script>

@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { contact } from '../../data/contact';
+---
+
+<BaseLayout
+  title="Contact | Dante Football Academy"
+  description="Contact Dante Football Academy in Ibadan about programmes and partnerships."
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Get in touch</p><h1>Contact</h1><p>
+        Speak with the academy about player development, programmes or
+        partnership opportunities.
+      </p>
+    </div>
+  </section>
+  <section class="shell-content section--white">
+    <div class="container contact-list">
+      <address>
+        {contact.addressLines.map((line) => <span>{line}</span>)}
+      </address><div>
+        {
+          contact.phones.map((phone) => (
+            <a href={phone.href}>{phone.display}</a>
+          ))
+        }<a href={`mailto:${contact.email}`}>{contact.email}</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+  .contact-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  .contact-list address,
+  .contact-list span,
+  .contact-list a {
+    display: block;
+    font-style: normal;
+  }
+  .contact-list a {
+    color: var(--blue-700);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  @media (max-width: 600px) {
+    .contact-list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

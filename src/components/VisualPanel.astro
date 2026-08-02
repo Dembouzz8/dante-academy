@@ -1,0 +1,66 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  label?: string;
+  variant?: 'pitch' | 'gallery' | 'portrait';
+  image?: ImageMetadata;
+  alt?: string;
+  objectPosition?: string;
+}
+const {
+  label = 'Dante Football Academy',
+  variant = 'pitch',
+  image,
+  alt = '',
+  objectPosition = '50% center',
+} = Astro.props;
+---
+
+<div
+  class:list={[
+    'visual-panel',
+    `visual-panel--${variant}`,
+    { 'has-image': image },
+  ]}
+  aria-hidden={!image ? 'true' : undefined}
+>
+  {
+    image && (
+      <Image
+        src={image}
+        alt={alt}
+        widths={[480, 720, 960]}
+        sizes="(max-width: 640px) 100vw, 50vw"
+        loading="lazy"
+        style={`object-position:${objectPosition}`}
+      />
+    )
+  }
+  <span class="visual-label">{label}</span><span class="visual-ring"
+  ></span><span class="visual-line"></span><span class="visual-mark">D</span>
+  {image && <span class="dante-diagonal-accent" aria-hidden="true" />}
+</div>
+
+<style>
+  .visual-panel > :global(img) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .visual-panel.has-image::before {
+    z-index: 1;
+    inset: 0;
+    border: 0;
+    background: linear-gradient(180deg, rgb(7 12 36 / 8%), rgb(7 12 36 / 55%));
+  }
+  .visual-panel.has-image::after,
+  .visual-panel.has-image .visual-ring,
+  .visual-panel.has-image .visual-line,
+  .visual-panel.has-image .visual-mark {
+    display: none;
+  }
+</style>
