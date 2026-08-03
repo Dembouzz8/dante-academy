@@ -1,10 +1,446 @@
 ---
-import RouteShell from '../../components/RouteShell.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import InternalHero from '../../components/InternalHero.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import Button from '../../components/Button.astro';
+import FootballMarker from '../../components/shared/FootballMarker.astro';
+import {
+  programmes,
+  developmentApproach,
+  developedQualities,
+  playerWelfareFeature,
+} from '../../data/programmes';
 ---
 
-<RouteShell
-  eyebrow="Player development"
-  title="Programmes"
-  description="A progressive football pathway for players from U10 through U19."
-  anchors={['grassroots', 'development', 'elite']}
-/>
+<BaseLayout
+  title="Programmes | Dante Football Academy"
+  description="Grassroots, Development and Elite football programmes for young players aged U10 to U19."
+>
+  <InternalHero
+    eyebrow="Our programmes"
+    title="A clear path for every stage of development."
+    description="Our programmes are structured around the needs of young players at different stages of their football journey."
+  />
+
+  <section class="section programme-intro">
+    <div class="container intro-grid">
+      <SectionHeading
+        eyebrow="Player development"
+        title="Three levels. One connected journey."
+      /><div>
+        <p class="lead">
+          Every programme has a clear purpose, appropriate expectations and a
+          focus on long-term growth.
+        </p><p>
+          Players build their football ability alongside confidence, discipline,
+          teamwork and understanding of the game. Programme details such as
+          schedules, fees and joining requirements will be shared directly by
+          the academy when confirmed.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="programme-sections">
+    {
+      programmes.map((programme, index) => (
+        <section
+          class:list={[
+            'section',
+            'programme-level',
+            { alternate: index % 2 === 1 },
+          ]}
+          id={programme.id}
+        >
+          <div class="container level-grid">
+            <>
+              <div class="level-visual has-image">
+                <>
+                  <Image
+                    src={programme.image}
+                    alt={programme.imageAlt}
+                    widths={[480, 720, 960]}
+                    sizes="(max-width: 640px) calc(100vw - 28px), (max-width: 900px) 45vw, 40vw"
+                    loading="lazy"
+                    style={`object-position:${programme.objectPosition}`}
+                  />
+                  <span class="level-overlay" aria-hidden="true" />
+                  <FootballMarker variant="light" class="level-marker" />
+                  <span class="dante-diagonal-accent" aria-hidden="true" />
+                </>
+              </div>
+              <div class="level-content">
+                <>
+                  <p class="eyebrow">Programme level</p>
+                  <div class="level-title">
+                    <>
+                      <h2>{programme.name}</h2>
+                      <span>{programme.ages}</span>
+                    </>
+                  </div>
+                  <p>{programme.description}</p>
+                  <h3>{index === 2 ? 'Provides' : 'Builds'}</h3>
+                  <ul>
+                    {programme.outcomes.map((outcome) => (
+                      <li>{outcome}</li>
+                    ))}
+                  </ul>
+                  <Button href="/contact/" variant="section">
+                    Enquire about {programme.name}
+                  </Button>
+                </>
+              </div>
+            </>
+          </div>
+        </section>
+      ))
+    }
+  </div>
+
+  <section class="section section--navy">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Our approach"
+        title="How player development works"
+        intro="Development is continuous, purposeful and appropriate to each stage of a young player’s journey."
+        light
+      /><div class="approach-grid">
+        {
+          developmentApproach.map((item) => (
+            <div>
+              <>
+                <FootballMarker variant="light" />
+                <strong>{item}</strong>
+              </>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section qualities">
+    <div class="container qualities-grid">
+      <div>
+        <SectionHeading
+          eyebrow="On and off the ball"
+          title="Skills and qualities developed"
+          intro="Football ability grows alongside the habits that help young people learn, communicate and contribute to a team."
+        />
+      </div><ol>
+        {
+          developedQualities.map((quality) => (
+            <li>
+              <FootballMarker variant="dark" />
+              {quality}
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="section welfare">
+    <div class="container welfare-grid">
+      <div class="welfare-image">
+        <Image
+          src={playerWelfareFeature.image}
+          alt={playerWelfareFeature.imageAlt}
+          widths={[480, 720, 960]}
+          sizes="(max-width: 640px) calc(100vw - 28px), (max-width: 900px) 45vw, 40vw"
+          loading="lazy"
+          style={`object-position:${playerWelfareFeature.objectPosition}`}
+        />
+        <span class="welfare-overlay" aria-hidden="true"></span>
+        <span class="dante-diagonal-accent" aria-hidden="true"></span>
+      </div><div>
+        <SectionHeading
+          eyebrow="Education and player welfare"
+          title="Development beyond football"
+        /><p>
+          The academy’s responsibility extends beyond performance. We encourage
+          character, responsibility, education, respect and wellbeing alongside
+          football development.
+        </p><p>
+          Clear communication with parents and guardians supports a positive
+          environment in which young players can learn with confidence.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="programme-cta">
+    <div class="container">
+      <p class="eyebrow">Start a conversation</p><h2>
+        Enquire about a programme
+      </h2><p>
+        Contact the academy to discuss the most appropriate development level
+        for a young player.
+      </p><Button href="/contact/" variant="light"
+        >Enquire About a Programme</Button
+      >
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .programme-level {
+    scroll-margin-top: 24px;
+  }
+  .programme-intro {
+    background: white;
+  }
+  .intro-grid,
+  .qualities-grid,
+  .welfare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9%;
+    align-items: start;
+  }
+  .lead {
+    font: 600 1.5rem/1.4 'Barlow Condensed';
+    text-transform: uppercase;
+  }
+  .programme-level {
+    background: var(--off-white);
+  }
+  .programme-level.alternate {
+    background: #e8e6e0;
+  }
+  .level-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 8%;
+    align-items: center;
+  }
+  .alternate .level-visual {
+    order: 2;
+  }
+  .level-visual {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4/5;
+    background: linear-gradient(
+      145deg,
+      var(--blue-700),
+      var(--navy-950) 56%,
+      var(--purple-700)
+    );
+    isolation: isolate;
+  }
+  .level-visual::before {
+    display: none;
+  }
+  .level-visual::after {
+    display: none;
+  }
+  .level-visual :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .level-overlay {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgb(7 12 36 / 18%),
+      transparent 45%,
+      rgb(7 12 36 / 16%)
+    );
+  }
+  .level-visual :global(.level-marker) {
+    position: absolute;
+    z-index: 2;
+    top: 28px;
+    left: 28px;
+  }
+  .level-content {
+    max-width: 620px;
+  }
+  .level-title {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 24px;
+    padding-bottom: 17px;
+    border-bottom: 1px solid #bfc1c8;
+  }
+  .level-title h2 {
+    margin: 0;
+    font: 800 clamp(3.8rem, 8vw, 7rem)/0.86 'Barlow Condensed';
+    text-transform: uppercase;
+  }
+  .level-title span {
+    padding-bottom: 8px;
+    color: var(--orange-600);
+    font-size: 0.76rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .level-content > p {
+    margin: 26px 0;
+    color: var(--grey-600);
+  }
+  .level-content h3 {
+    font: 700 1rem 'Barlow Condensed';
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .level-content ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 25px;
+    padding: 0;
+    margin: 0 0 28px;
+    list-style: none;
+    border-top: 1px solid #c7c8cd;
+  }
+  .level-content li {
+    padding: 10px 0;
+    border-bottom: 1px solid #c7c8cd;
+    font-size: 0.8rem;
+  }
+  .level-content li::before {
+    content: '→';
+    margin-right: 10px;
+    color: var(--orange-500);
+  }
+  .approach-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid #303650;
+    border-left: 1px solid #303650;
+  }
+  .approach-grid div {
+    min-height: 150px;
+    padding: 24px;
+    border-right: 1px solid #303650;
+    border-bottom: 1px solid #303650;
+  }
+  .approach-grid span {
+    display: block;
+    color: var(--orange-500);
+    font-size: 0.65rem;
+  }
+  .approach-grid strong {
+    display: block;
+    margin-top: 40px;
+    font: 700 1.2rem/1.1 'Barlow Condensed';
+    text-transform: uppercase;
+  }
+  .qualities {
+    background: white;
+  }
+  .qualities ol {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    border-top: 1px solid var(--grey-200);
+  }
+  .qualities li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 8px;
+    border-bottom: 1px solid var(--grey-200);
+    font: 700 1.05rem 'Barlow Condensed';
+    text-transform: uppercase;
+  }
+  .qualities li span {
+    display: inline-block;
+    width: 34px;
+    color: var(--orange-500);
+    font: 500 0.62rem Inter;
+  }
+  .welfare {
+    background: #e8e6e0;
+  }
+  .welfare-grid {
+    align-items: center;
+  }
+  .welfare-image {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4/5;
+    isolation: isolate;
+  }
+  .welfare-image :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .welfare-overlay {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    background: linear-gradient(180deg, rgb(7 12 36 / 8%), rgb(7 12 36 / 14%));
+    pointer-events: none;
+  }
+  .programme-cta {
+    padding: 82px 0;
+    background: var(--orange-500);
+    color: white;
+  }
+  .programme-cta .eyebrow {
+    color: var(--navy-950);
+  }
+  .programme-cta h2 {
+    max-width: 900px;
+    margin: 0;
+    font: 800 clamp(3.3rem, 8vw, 6.5rem)/0.88 'Barlow Condensed';
+    text-transform: uppercase;
+  }
+  .programme-cta p:not(.eyebrow) {
+    max-width: 600px;
+  }
+  @media (max-width: 900px) {
+    .level-grid {
+      gap: 5%;
+    }
+    .approach-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .intro-grid,
+    .qualities-grid {
+      gap: 5%;
+    }
+  }
+  @media (max-width: 640px) {
+    .intro-grid,
+    .qualities-grid,
+    .welfare-grid,
+    .level-grid {
+      grid-template-columns: 1fr;
+      gap: 38px;
+    }
+    .alternate .level-visual {
+      order: 0;
+    }
+    .level-title {
+      display: block;
+    }
+    .level-title span {
+      display: block;
+      padding-top: 10px;
+    }
+    .level-content ul {
+      grid-template-columns: 1fr;
+    }
+    .approach-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .qualities ol {
+      grid-template-columns: 1fr;
+    }
+    .programme-cta .button,
+    .level-content .button {
+      width: 100%;
+    }
+  }
+</style>

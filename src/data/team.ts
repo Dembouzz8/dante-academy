@@ -2,6 +2,9 @@ import ambDadaIseoluwaAkinoluwa from '../assets/images/team/amb-dada-iseoluwa-ak
 import dadaAdeshewa from '../assets/images/team/dada-adeshewa.jpg';
 import dadaHalleluyah from '../assets/images/team/dada-halleluyah.jpg';
 import salamiGrace from '../assets/images/team/salami-grace.jpg';
+import adetokunboRichard from '../assets/images/team/adetokunbo-richard.png';
+import joshuaDavid from '../assets/images/team/joshua-david.jpeg';
+import azeezIbrahim from '../assets/images/team/azeez-ibrahim.jpg';
 
 export const team = [
   {
@@ -31,19 +34,19 @@ export const team = [
   {
     name: 'Adetokunbo Richard',
     role: 'Director of Records, Supply and Stores',
-    image: '',
-    objectPosition: '50% 35%',
+    image: adetokunboRichard,
+    objectPosition: '50% 28%',
   },
   {
     name: 'Joshua David (mACS, GMICCON)',
     role: 'Director, Marketing, Media and Communications',
-    image: '',
-    objectPosition: '50% 35%',
+    image: joshuaDavid,
+    objectPosition: '50% 28%',
   },
   {
     name: 'Azeez Ibrahim',
     role: 'Medical Director',
-    image: '',
-    objectPosition: '50% 35%',
+    image: azeezIbrahim,
+    objectPosition: '50% 24%',
   },
 ] as const;

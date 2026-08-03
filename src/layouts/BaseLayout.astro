@@ -12,15 +12,17 @@ const { title, description } = Astro.props;
 
 <!doctype html>
 <html lang="en">
-  <head
-    ><meta charset="UTF-8" /><meta
-      name="viewport"
-      content="width=device-width"
-    /><meta name="description" content={description} /><meta
-      name="generator"
-      content={Astro.generator}
-    /><link rel="icon" href={logo.src} type="image/png" /><title>
-      {title}
-    </title></head
-  ><body><Header /><main id="main-content"><slot /></main><Footer /></body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" href={logo.src} type="image/png" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Header />
+    <main id="main-content"><slot /></main>
+    <Footer />
+  </body>
 </html>

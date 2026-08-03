@@ -1,10 +1,530 @@
 ---
-import RouteShell from '../../components/RouteShell.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import InternalHero from '../../components/InternalHero.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import VisualPanel from '../../components/VisualPanel.astro';
+import TeamCard from '../../components/TeamCard.astro';
+import Button from '../../components/Button.astro';
+import FootballMarker from '../../components/shared/FootballMarker.astro';
+import hero from '../../assets/images/hero/dante-hero.jpeg';
+import storyImage from '../../assets/images/academy/more-than-football.jpg';
+import pathwayImage from '../../assets/images/academy/potential-to-progression.png';
+import directorImage from '../../assets/images/team/amb-dada-iseoluwa-akinoluwa.jpeg';
+import { academyContent, pathwayDetails } from '../../data/academy';
+import { directorMessage, whyDante } from '../../data/site';
+import { team } from '../../data/team';
 ---
 
-<RouteShell
-  eyebrow="Who we are"
-  title="The Academy"
-  description="Discover the purpose, philosophy and people behind Dante Football Academy."
-  anchors={['story', 'philosophy', 'pathway', 'team']}
-/>
+<BaseLayout
+  title="The Academy | Dante Football Academy"
+  description="The purpose, philosophy, pathway and leadership of Dante Football Academy in Ibadan."
+>
+  <InternalHero
+    eyebrow="About Dante Football Academy"
+    title="Developing players. Building character."
+    description="Dante Football Academy combines structured football development, education, mentorship and discipline to help young players grow on and off the pitch."
+    image={hero}
+    objectPosition="58% center"
+  />
+
+  <section class="section section--white anchored" id="story">
+    <div class="container story-grid">
+      <div>
+        <SectionHeading
+          eyebrow="Our story"
+          title="A clear purpose for every player"
+        /><p class="lead">
+          Dante Football Academy exists to give promising young footballers a
+          credible environment in which talent, understanding and character can
+          grow together.
+        </p><p>
+          Our approach brings structured coaching together with education,
+          mentorship and discipline. We want young players to become confident
+          in their ability, responsible in their choices and prepared for
+          appropriate opportunities in football and in life.
+        </p><ul class="story-list">
+          {academyContent.storyPoints.map((point) => <li>{point}</li>)}
+        </ul>
+      </div><VisualPanel
+        label="Football, education and character"
+        image={storyImage}
+        alt="A coach engaging with young players during an academy session"
+        objectPosition="50% center"
+      />
+    </div>
+  </section>
+
+  <section class="section director-section">
+    <div class="container director-grid">
+      <VisualPanel
+        label="Leadership with purpose"
+        variant="portrait"
+        image={directorImage}
+        alt="Amb. Dada Iseoluwa Akinoluwa, Director of Dante Football Academy"
+        objectPosition="50% 42%"
+      /><div>
+        <SectionHeading
+          eyebrow="Director’s message"
+          title="Building players. Shaping people."
+        />{
+          directorMessage.split('\n\n').map((paragraph) => <p>{paragraph}</p>)
+        }<div class="signature">
+          <strong>Amb. Dada Iseoluwa Akinoluwa</strong><span>Director</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--navy">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Our direction"
+        title="Mission and vision"
+        light
+      /><div class="mission-grid">
+        <article>
+          <FootballMarker variant="light" /><h3>Our mission</h3><p>
+            {academyContent.mission}
+          </p>
+        </article><article>
+          <FootballMarker variant="light" /><h3>Our vision</h3><p>
+            {academyContent.vision}
+          </p>
+        </article>
+      </div><div class="values">
+        <p class="eyebrow">Core values</p><ol>
+          {
+            academyContent.values.map((value) => (
+              <li>
+                <FootballMarker variant="light" />
+                {value}
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="section philosophy anchored" id="philosophy">
+    <div class="container philosophy-grid">
+      <div>
+        <SectionHeading
+          eyebrow="Football philosophy"
+          title="Develop the whole player"
+          intro="Football growth is strongest when technical learning, intelligent decision-making and personal responsibility develop together."
+        /><div class="philosophy-list">
+          {
+            academyContent.philosophy.map((item) => (
+              <div>
+                <>
+                  <FootballMarker variant="dark" />
+                  <strong>{item}</strong>
+                </>
+              </div>
+            ))
+          }
+        </div>
+      </div><VisualPanel
+        label="Learning through the game"
+        image={pathwayImage}
+        alt="A coach guiding a player during football development"
+        objectPosition="50% center"
+      />
+    </div>
+  </section>
+
+  <section class="section section--white">
+    <div class="container">
+      <SectionHeading
+        eyebrow="The Dante standard"
+        title="Why choose Dante"
+        intro="Four connected priorities shape the academy environment and every player’s experience."
+      /><div class="why-list">
+        {
+          whyDante.map((item) => (
+            <article>
+              <>
+                <FootballMarker variant="dark" />
+                <div>
+                  <>
+                    <h3>{item.title}</h3>
+                    <p>{item.text}</p>
+                  </>
+                </div>
+              </>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section pathway-section anchored" id="pathway">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Development pathway"
+        title="A purposeful journey"
+        intro="Progress is built stage by stage. Each step supports the next without promising a particular destination."
+      /><ol class="pathway-grid">
+        {
+          pathwayDetails.map((stage) => (
+            <li>
+              <>
+                <FootballMarker variant="dark" />
+                <h3>{stage.title}</h3>
+                <p>{stage.text}</p>
+              </>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section--navy anchored" id="team">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Leadership and management"
+        title="A team committed to development"
+        intro="The academy’s provisional leadership and management team."
+        light
+      /><div class="full-team-grid">
+        {team.map((member) => <TeamCard {...member} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section welfare">
+    <div class="container welfare-grid">
+      <div>
+        <p class="eyebrow">Player welfare</p><h2>
+          Development in a respectful environment
+        </h2>
+      </div><div>
+        <p>{academyContent.safeguarding}</p><ul>
+          <li>Respectful, age-appropriate coaching</li><li>
+            Player welfare and safe participation
+          </li><li>Communication with parents and guardians</li><li>
+            Responsible use of academy photography
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="academy-cta">
+    <div class="container">
+      <p class="eyebrow">Speak with us</p><h2>Contact the Academy</h2><p>
+        Learn more about Dante Football Academy, our programmes or partnership
+        opportunities.
+      </p><Button href="/contact/" variant="light">Contact the Academy</Button>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .anchored {
+    scroll-margin-top: 24px;
+  }
+  .story-grid,
+  .director-grid,
+  .philosophy-grid,
+  .welfare-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 8%;
+    align-items: center;
+  }
+  .story-grid > .visual-panel {
+    min-height: 650px;
+  }
+  .lead {
+    font: 600 1.4rem/1.4 'Barlow Condensed';
+    text-transform: uppercase;
+  }
+  .story-list {
+    padding: 0;
+    margin: 30px 0 0;
+    list-style: none;
+    border-top: 1px solid var(--grey-200);
+  }
+  .story-list li {
+    padding: 13px 0;
+    border-bottom: 1px solid var(--grey-200);
+    font-size: 0.86rem;
+  }
+  .story-list li::before {
+    content: '→';
+    margin-right: 13px;
+    color: var(--orange-500);
+  }
+  .director-section {
+    background: #e8e6e0;
+  }
+  .director-grid > .visual-panel {
+    aspect-ratio: 4/5;
+    min-height: 0;
+  }
+  .director-grid p {
+    color: #4f5462;
+    font-size: 0.92rem;
+  }
+  .signature {
+    margin-top: 28px;
+    padding-left: 17px;
+    border-left: 3px solid var(--orange-500);
+  }
+  .signature strong,
+  .signature span {
+    display: block;
+  }
+  .signature span {
+    font-size: 0.8rem;
+    color: var(--grey-600);
+  }
+  .mission-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid #2a304b;
+  }
+  .mission-grid article {
+    padding: 45px;
+    min-height: 300px;
+  }
+  .mission-grid article + article {
+    border-left: 1px solid #2a304b;
+  }
+  .mission-grid span,
+  .why-list > article > span {
+    color: var(--orange-500);
+    font-size: 0.7rem;
+  }
+  .mission-grid h3 {
+    margin: 55px 0 12px;
+    font: 700 2.4rem 'Barlow Condensed';
+    text-transform: uppercase;
+  }
+  .mission-grid p {
+    color: #b9bdca;
+  }
+  .values {
+    margin-top: 60px;
+  }
+  .values ol {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    padding: 0;
+    margin: 24px 0 0;
+    list-style: none;
+    border-top: 1px solid #343a55;
+  }
+  .values li {
+    padding: 22px 10px 0;
+    font: 700 1.1rem 'Barlow Condensed';
+    text-transform: uppercase;
+  }
+  .values li span {
+    display: block;
+    color: var(--orange-500);
+    font: 500 0.62rem Inter;
+    margin-bottom: 8px;
+  }
+  .values li :global(.football-marker) {
+    display: block;
+    margin-bottom: 10px;
+  }
+  .philosophy {
+    background: var(--off-white);
+  }
+  .philosophy-grid > .visual-panel {
+    min-height: 650px;
+  }
+  .philosophy-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid var(--grey-200);
+  }
+  .philosophy-list div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 8px;
+    border-bottom: 1px solid var(--grey-200);
+  }
+  .philosophy-list span {
+    color: var(--orange-500);
+    font-size: 0.62rem;
+    margin-right: 10px;
+  }
+  .philosophy-list strong {
+    font: 700 1rem 'Barlow Condensed';
+    text-transform: uppercase;
+  }
+  .why-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--grey-200);
+  }
+  .why-list article {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    gap: 15px;
+    background: white;
+    padding: 28px;
+    min-height: 180px;
+  }
+  .why-list h3 {
+    margin: 0;
+    font: 700 1.6rem 'Barlow Condensed';
+    text-transform: uppercase;
+  }
+  .why-list p {
+    color: var(--grey-600);
+    font-size: 0.85rem;
+  }
+  .pathway-section {
+    background: #ecebe7;
+  }
+  .pathway-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    border-top: 2px solid var(--navy-900);
+  }
+  .pathway-grid li {
+    padding: 28px;
+    border-right: 1px solid #c8c8c4;
+    border-bottom: 1px solid #c8c8c4;
+    min-height: 220px;
+  }
+  .pathway-grid li:nth-child(3n) {
+    border-right: 0;
+  }
+  .pathway-grid span {
+    color: var(--orange-500);
+    font-size: 0.65rem;
+  }
+  .pathway-grid :global(.football-marker) {
+    display: block;
+  }
+  .pathway-grid h3 {
+    margin: 38px 0 8px;
+    font: 700 1.5rem 'Barlow Condensed';
+    text-transform: uppercase;
+  }
+  .pathway-grid p {
+    margin: 0;
+    color: var(--grey-600);
+    font-size: 0.82rem;
+  }
+  .full-team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 38px 16px;
+  }
+  .welfare {
+    background: white;
+  }
+  .welfare h2 {
+    margin: 0;
+    font: 700 clamp(2.8rem, 5vw, 4.8rem)/0.92 'Barlow Condensed';
+    text-transform: uppercase;
+  }
+  .welfare-grid > div:last-child {
+    border-left: 3px solid var(--orange-500);
+    padding-left: 32px;
+  }
+  .welfare li {
+    margin: 7px 0;
+  }
+  .academy-cta {
+    padding: 82px 0;
+    background: var(--orange-500);
+    color: white;
+  }
+  .academy-cta .eyebrow {
+    color: var(--navy-950);
+  }
+  .academy-cta h2 {
+    margin: 0;
+    font: 800 clamp(3.5rem, 8vw, 6.5rem)/0.9 'Barlow Condensed';
+    text-transform: uppercase;
+  }
+  .academy-cta p:not(.eyebrow) {
+    max-width: 600px;
+  }
+  @media (max-width: 900px) {
+    .story-grid,
+    .director-grid,
+    .philosophy-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 5%;
+    }
+    .mission-grid article {
+      padding: 32px;
+    }
+    .values ol {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .full-team-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .welfare-grid {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+    .welfare-grid > div:last-child {
+      margin-left: 0;
+    }
+  }
+  @media (max-width: 640px) {
+    .story-grid,
+    .director-grid,
+    .philosophy-grid {
+      grid-template-columns: 1fr;
+      gap: 38px;
+    }
+    .story-grid > .visual-panel,
+    .philosophy-grid > .visual-panel {
+      min-height: 450px;
+    }
+    .director-grid > .visual-panel {
+      order: 2;
+    }
+    .mission-grid {
+      grid-template-columns: 1fr;
+    }
+    .mission-grid article + article {
+      border-left: 0;
+      border-top: 1px solid #2a304b;
+    }
+    .values ol {
+      grid-template-columns: 1fr 1fr;
+    }
+    .why-list {
+      grid-template-columns: 1fr;
+    }
+    .pathway-grid {
+      grid-template-columns: 1fr;
+    }
+    .pathway-grid li,
+    .pathway-grid li:nth-child(3n) {
+      border-right: 0;
+    }
+    .full-team-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 32px 12px;
+    }
+    .welfare-grid > div:last-child {
+      padding-left: 20px;
+    }
+    .academy-cta .button {
+      width: 100%;
+    }
+  }
+</style>

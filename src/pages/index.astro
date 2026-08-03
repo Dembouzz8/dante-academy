@@ -5,6 +5,7 @@ import Button from '../components/Button.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import VisualPanel from '../components/VisualPanel.astro';
 import FeatureImageCard from '../components/FeatureImageCard.astro';
+import FootballMarker from '../components/shared/FootballMarker.astro';
 import {
   credibilityItems,
   directorMessage,
@@ -52,10 +53,10 @@ import { homepageImages } from '../data/homepageImages';
   <section class="credibility" aria-label="Academy highlights">
     <div class="container credibility-grid">
       {
-        credibilityItems.map((item, index) => (
+        credibilityItems.map((item) => (
           <div>
             <>
-              <span>0{index + 1}</span>
+              <FootballMarker variant="dark" />
               <strong>{item}</strong>
             </>
           </div>
@@ -99,7 +100,7 @@ import { homepageImages } from '../data/homepageImages';
       />
       <div class="programme-grid">
         {
-          programmes.map((programme, index) => (
+          programmes.map((programme) => (
             <article
               class="programme-card photo-ready"
               data-image-slot={programme.id}
@@ -107,7 +108,7 @@ import { homepageImages } from '../data/homepageImages';
               <>
                 <div class="programme-top">
                   <>
-                    <span>0{index + 1}</span>
+                    <FootballMarker variant="light" />
                     <span>{programme.ages}</span>
                   </>
                 </div>
@@ -131,10 +132,10 @@ import { homepageImages } from '../data/homepageImages';
         intro="Our work is shaped by clear standards and a long-term view of player development."
       /><div class="why-grid">
         {
-          whyDante.map((item, index) => (
+          whyDante.map((item) => (
             <article>
               <>
-                <span>0{index + 1}</span>
+                <FootballMarker variant="dark" />
                 <h3>{item.title}</h3>
                 <p>{item.text}</p>
               </>
@@ -157,10 +158,10 @@ import { homepageImages } from '../data/homepageImages';
       </div>
       <ol class="pathway">
         {
-          pathway.map((step, index) => (
+          pathway.map((step) => (
             <li>
               <>
-                <span>{String(index + 1).padStart(2, '0')}</span>
+                <FootballMarker variant="dark" />
                 <strong>{step}</strong>
               </>
             </li>
@@ -228,7 +229,7 @@ import { homepageImages } from '../data/homepageImages';
         /><Button href="/academy/#team" variant="section">Meet the Team</Button>
       </div><div class="team-grid">
         {
-          team.slice(0, 4).map((member, index) => (
+          team.slice(0, 4).map((member) => (
             <article>
               <>
                 <div
@@ -246,7 +247,7 @@ import { homepageImages } from '../data/homepageImages';
                     />
                   ) : (
                     <>
-                      <span>{String(index + 1).padStart(2, '0')}</span>
+                      <FootballMarker variant="light" />
                       <b>
                         {member.name
                           .split(' ')
