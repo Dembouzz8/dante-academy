@@ -4,9 +4,10 @@ interface Props {
   variant?: 'primary' | 'outline' | 'light' | 'section';
   class?: string;
 }
+import ArrowUpRight from './shared/ArrowUpRight.astro';
 const { href, variant = 'primary', class: className = '' } = Astro.props;
 ---
 
 <a class:list={['button', `button--${variant}`, className]} href={href}
-  ><slot /><span aria-hidden="true">↗</span></a
+  ><slot /><ArrowUpRight /></a
 >

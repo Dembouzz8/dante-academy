@@ -13,7 +13,7 @@ export const programmes = [
       'A young Dante player controlling the football during a structured training drill',
     objectPosition: '52% 50%',
     description:
-      'Fundamental football skills, confidence, coordination and understanding of the game.',
+      'Players develop fundamental football skills, confidence, coordination and understanding of the game.',
     outcomes: [
       'Fundamental football skills',
       'Coordination',
@@ -31,7 +31,7 @@ export const programmes = [
       'Dante development players applying their learning in a training game',
     objectPosition: '50% 42%',
     description:
-      'Technical ability, teamwork, decision-making and game intelligence.',
+      'Players strengthen their technical ability, teamwork, decision-making and game intelligence.',
     outcomes: [
       'Stronger technical ability',
       'Tactical awareness',
@@ -49,7 +49,7 @@ export const programmes = [
       'Dante elite players competing for the football during an intense session',
     objectPosition: '50% 40%',
     description:
-      'Advanced preparation for talented players progressing towards higher competitive levels.',
+      'Talented players receive advanced preparation for progression towards higher competitive levels.',
     outcomes: [
       'Advanced technical development',
       'Higher-intensity preparation',

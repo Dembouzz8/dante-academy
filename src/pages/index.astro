@@ -6,12 +6,7 @@ import SectionHeading from '../components/SectionHeading.astro';
 import VisualPanel from '../components/VisualPanel.astro';
 import FeatureImageCard from '../components/FeatureImageCard.astro';
 import FootballMarker from '../components/shared/FootballMarker.astro';
-import {
-  credibilityItems,
-  directorMessage,
-  pathway,
-  whyDante,
-} from '../data/site';
+import { directorMessage, pathway, whyDante } from '../data/site';
 import { programmes } from '../data/programmes';
 import { team } from '../data/team';
 import { homepageImages } from '../data/homepageImages';
@@ -33,11 +28,15 @@ import { homepageImages } from '../data/homepageImages';
       fetchpriority="high"
     />
     <div class="hero-overlay" aria-hidden="true"></div>
-    <div class="hero-lines" aria-hidden="true"></div>
     <div class="container hero-grid">
       <div class="hero-copy">
         <p class="eyebrow">Dante Football Academy · Ibadan, Nigeria</p><h1>
-          Developing football talent.<br /><em>Building leaders for life.</em>
+          <span class="headline-line">Developing football</span>
+          <span class="headline-line">talent.</span>
+          <span class="headline-line headline-line--accent"
+            >Building leaders</span
+          >
+          <span class="headline-line headline-line--accent">for life.</span>
         </h1><p class="hero-intro">
           A structured pathway for young players to grow through purposeful
           coaching, education, discipline and opportunity.
@@ -48,20 +47,6 @@ import { homepageImages } from '../data/homepageImages';
           >
         </div>
       </div>
-    </div>
-  </section>
-  <section class="credibility" aria-label="Academy highlights">
-    <div class="container credibility-grid">
-      {
-        credibilityItems.map((item) => (
-          <div>
-            <>
-              <FootballMarker variant="dark" />
-              <strong>{item}</strong>
-            </>
-          </div>
-        ))
-      }
     </div>
   </section>
   <section class="section intro">
@@ -82,8 +67,8 @@ import { homepageImages } from '../data/homepageImages';
           to develop their ability, intelligence and character.
         </p><p>
           Based in Ibadan, we place football development alongside education and
-          mentorship—preparing every player for the demands of the game and the
-          responsibilities beyond it.
+          mentorship. This prepares every player for the demands of the game and
+          the responsibilities beyond it.
         </p><Button href="/academy/" variant="section"
           >Discover the Academy</Button
         >
@@ -349,9 +334,11 @@ import { homepageImages } from '../data/homepageImages';
     text-transform: uppercase;
     letter-spacing: -0.035em;
   }
-  .hero h1 em {
+  .headline-line--accent {
     color: var(--orange-500);
-    font-style: normal;
+  }
+  .headline-line {
+    display: block;
   }
   .hero-intro {
     max-width: 630px;
@@ -363,34 +350,6 @@ import { homepageImages } from '../data/homepageImages';
     flex-wrap: wrap;
     gap: 18px;
     margin-top: 32px;
-  }
-  .credibility {
-    background: white;
-    border-bottom: 1px solid var(--grey-200);
-  }
-  .credibility-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-  }
-  .credibility-grid div {
-    padding: 22px 18px;
-    border-right: 1px solid var(--grey-200);
-    display: flex;
-    align-items: center;
-    gap: 13px;
-  }
-  .credibility-grid div:first-child {
-    border-left: 1px solid var(--grey-200);
-  }
-  .credibility span {
-    color: var(--orange-500);
-    font-size: 0.65rem;
-    font-weight: 700;
-  }
-  .credibility strong {
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
   }
   .split-grid {
     display: grid;
@@ -499,13 +458,13 @@ import { homepageImages } from '../data/homepageImages';
     background: #ecebe7;
   }
   .pathway-image-slot {
-    margin-top: 50px;
+    margin-top: 48px;
   }
   .pathway {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     padding: 0;
-    margin: 50px 0 35px;
+    margin: 0 0 40px;
     list-style: none;
   }
   .pathway li {
@@ -538,8 +497,8 @@ import { homepageImages } from '../data/homepageImages';
     display: flex;
     justify-content: space-between;
     align-items: end;
-    gap: 40px;
-    margin-bottom: 40px;
+    gap: var(--section-header-space);
+    margin-bottom: var(--section-header-space);
   }
   .section-header :global(.section-heading) {
     margin-bottom: 0;
@@ -551,7 +510,7 @@ import { homepageImages } from '../data/homepageImages';
     display: grid;
     grid-template-columns: 1.4fr 0.8fr;
     grid-template-rows: 1fr auto;
-    gap: 18px;
+    gap: 20px;
   }
   .visual-grid > .visual-panel:first-child {
     grid-row: span 2;
@@ -612,7 +571,7 @@ import { homepageImages } from '../data/homepageImages';
   .team-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
+    gap: 20px;
   }
   .team-portrait {
     position: relative;
@@ -667,7 +626,7 @@ import { homepageImages } from '../data/homepageImages';
   .contact-cta {
     background: var(--orange-500);
     color: white;
-    padding: 78px 0;
+    padding: var(--section-space) 0;
   }
   .contact-cta .eyebrow {
     color: var(--navy-950);
@@ -682,14 +641,11 @@ import { homepageImages } from '../data/homepageImages';
     max-width: 580px;
   }
   .contact-cta .button {
-    margin-top: 15px;
+    margin-top: 24px;
   }
   @media (max-width: 900px) {
     .hero-grid {
       grid-template-columns: 1fr;
-    }
-    .credibility-grid {
-      grid-template-columns: 1fr 1fr;
     }
     .split-grid {
       grid-template-columns: 1fr;
@@ -725,7 +681,7 @@ import { homepageImages } from '../data/homepageImages';
     }
     .section-header {
       display: block;
-      margin-bottom: 40px;
+      margin-bottom: var(--section-header-space);
     }
     .section-header > .button {
       margin-top: 24px;
@@ -735,32 +691,53 @@ import { homepageImages } from '../data/homepageImages';
     }
     .team-grid {
       grid-template-columns: 1fr 1fr;
+      gap: 28px 16px;
     }
   }
   @media (max-width: 600px) {
     .hero {
-      min-height: 760px;
+      min-height: max(640px, calc(100svh - 74px));
+      align-items: center;
     }
     .hero :global(.hero-photo img) {
       object-position: 52% center;
     }
     .hero-overlay {
       background:
-        linear-gradient(180deg, rgba(7, 12, 36, 0.72), rgba(7, 12, 36, 0.92)),
-        linear-gradient(90deg, rgba(7, 12, 36, 0.88), rgba(7, 12, 36, 0.35));
+        linear-gradient(180deg, rgba(7, 12, 36, 0.18), rgba(7, 12, 36, 0.66)),
+        linear-gradient(
+          90deg,
+          rgba(7, 12, 36, 0.9) 0%,
+          rgba(7, 12, 36, 0.72) 56%,
+          rgba(7, 12, 36, 0.24) 100%
+        );
+    }
+    .hero::after {
+      background: var(--orange-500);
     }
     .hero-grid {
-      padding-block: 76px;
+      padding-block: 48px 44px;
     }
     .hero h1 {
-      font-size: clamp(3.35rem, 16vw, 4.1rem);
+      margin: 12px 0 20px;
+      font-size: clamp(2.85rem, 13.5vw, 3.45rem);
+      line-height: 0.88;
+      letter-spacing: -0.025em;
+    }
+    .hero-intro {
+      margin-block: 0;
+      font-size: 0.96rem;
     }
     .hero-actions {
       align-items: stretch;
       flex-direction: column;
+      gap: 14px;
+      margin-top: 24px;
     }
     .hero-actions :global(.button) {
       width: 100%;
+      min-height: 54px;
+      padding: 15px 22px;
     }
     .intro-grid {
       grid-template-columns: 1fr;
@@ -770,12 +747,6 @@ import { homepageImages } from '../data/homepageImages';
     }
     .intro-visual .visual-panel {
       min-height: 420px;
-    }
-    .credibility-grid {
-      grid-template-columns: 1fr;
-    }
-    .credibility-grid div {
-      border-left: 1px solid var(--grey-200);
     }
     .why-grid {
       grid-template-columns: 1fr;

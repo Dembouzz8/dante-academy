@@ -6,29 +6,22 @@ export const site = {
   registrationNumber: '',
 } as const;
 
-export const credibilityItems = [
-  'Ibadan, Nigeria',
-  'U10–U19 Development',
-  'Three Development Levels',
-  'Football, Education and Character',
-] as const;
-
 export const whyDante = [
   {
     title: 'Structured Coaching',
-    text: 'Purposeful development built around each stage of a young player’s journey.',
+    text: 'Purposeful coaching supports each stage of a young player’s journey.',
   },
   {
     title: 'Education and Development',
-    text: 'Growth beyond the pitch, with learning placed alongside football.',
+    text: 'Education and football development work together on and off the pitch.',
   },
   {
     title: 'Character and Discipline',
-    text: 'Standards that encourage responsibility, resilience and respect.',
+    text: 'Clear standards encourage responsibility, resilience and respect.',
   },
   {
     title: 'Football Opportunities',
-    text: 'A clear environment for talented players to prepare for higher levels.',
+    text: 'Talented players prepare for appropriate opportunities at higher levels.',
   },
 ] as const;
 

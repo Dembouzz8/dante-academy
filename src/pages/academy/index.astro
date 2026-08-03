@@ -424,7 +424,7 @@ import { team } from '../../data/team';
   .full-team-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 38px 16px;
+    gap: 32px 20px;
   }
   .welfare {
     background: white;
@@ -442,7 +442,7 @@ import { team } from '../../data/team';
     margin: 7px 0;
   }
   .academy-cta {
-    padding: 82px 0;
+    padding: var(--section-space) 0;
     background: var(--orange-500);
     color: white;
   }
@@ -456,6 +456,9 @@ import { team } from '../../data/team';
   }
   .academy-cta p:not(.eyebrow) {
     max-width: 600px;
+  }
+  .academy-cta .button {
+    margin-top: 24px;
   }
   @media (max-width: 900px) {
     .story-grid,
@@ -518,7 +521,7 @@ import { team } from '../../data/team';
     }
     .full-team-grid {
       grid-template-columns: 1fr 1fr;
-      gap: 32px 12px;
+      gap: 28px 16px;
     }
     .welfare-grid > div:last-child {
       padding-left: 20px;
