@@ -2,8 +2,10 @@
 import { Image } from 'astro:assets';
 import logo from '../assets/brand/dante-logo.png';
 import { academyLinks } from '../data/navigation';
-import { contact, socialLinks } from '../data/contact';
+import { contact } from '../data/contact';
+import { socialLinks } from '../data/social';
 import { site } from '../data/site';
+import SocialIcon from './shared/SocialIcon.astro';
 const socials = Object.entries(socialLinks).filter(([, url]) => url);
 ---
 
@@ -42,7 +44,10 @@ const socials = Object.entries(socialLinks).filter(([, url]) => url);
     socials.length > 0 && (
       <div class="container social-links">
         {socials.map(([name, url]) => (
-          <a href={url}>{name}</a>
+          <a href={url} rel="noreferrer">
+            <SocialIcon name={name} />
+            <span>{name}</span>
+          </a>
         ))}
       </div>
     )

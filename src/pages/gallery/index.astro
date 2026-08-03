@@ -1,9 +1,310 @@
 ---
-import RouteShell from '../../components/RouteShell.astro';
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import InternalHero from '../../components/InternalHero.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import Button from '../../components/Button.astro';
+import {
+  closingGalleryImage,
+  featuredGalleryImage,
+  galleryHero,
+  galleryImages,
+} from '../../data/gallery';
 ---
 
-<RouteShell
-  eyebrow="Inside Dante"
-  title="Gallery"
-  description="See the focus, energy and togetherness that shape the Dante environment."
-/>
+<BaseLayout
+  title="Gallery | Dante Football Academy"
+  description="A photo story of player development, coaching, teamwork and academy life at Dante Football Academy."
+>
+  <InternalHero
+    eyebrow="Inside Dante"
+    title="The people, energy and purpose behind the academy."
+    description="Explore moments from Dante Football Academy, including player development, coaching, teamwork and the wider academy community."
+    image={galleryHero.image}
+    objectPosition={galleryHero.objectPosition}
+  />
+
+  <section class="section gallery-intro section--white">
+    <div class="container intro-grid">
+      <SectionHeading
+        eyebrow="A day inside Dante"
+        title="Football development in action"
+      />
+      <div class="intro-copy">
+        <p class="lead">
+          These photographs document a recently concluded academy event and the
+          people who brought it to life.
+        </p>
+        <p>
+          Together, they show the focus of the players, the guidance of coaches
+          and staff, and the shared commitment that surrounds every session.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="featured-section">
+    <div class="container">
+      <figure class="featured-image">
+        <Image
+          src={featuredGalleryImage.image}
+          alt={featuredGalleryImage.alt}
+          widths={[720, 1080, 1440, 1920]}
+          sizes="(max-width: 640px) calc(100vw - 28px), min(1200px, calc(100vw - 40px))"
+          loading="lazy"
+          style={`object-position:${featuredGalleryImage.objectPosition}`}
+        />
+        <span class="dante-diagonal-accent" aria-hidden="true"></span>
+        <figcaption>
+          <strong>{featuredGalleryImage.title}</strong>
+          <span>{featuredGalleryImage.caption}</span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section photo-story" aria-labelledby="photo-story-title">
+    <div class="container">
+      <div class="story-heading">
+        <p class="eyebrow">The photo story</p>
+        <h2 id="photo-story-title">Focus. Learning. Togetherness.</h2>
+      </div>
+      <div class="gallery-grid">
+        {
+          galleryImages.map((item) => (
+            <figure class:list={['gallery-card', `span-${item.span}`]}>
+              <div class="gallery-image">
+                <Image
+                  src={item.image}
+                  alt={item.alt}
+                  widths={[480, 720, 1080, 1440]}
+                  sizes="(max-width: 640px) calc(100vw - 28px), (max-width: 960px) 50vw, 40vw"
+                  loading="lazy"
+                  style={`object-position:${item.objectPosition}`}
+                />
+                {item.accent && (
+                  <span class="dante-diagonal-accent" aria-hidden="true" />
+                )}
+              </div>
+              {item.title && <figcaption>{item.title}</figcaption>}
+            </figure>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section closing-story section--navy">
+    <div class="container closing-grid">
+      <div>
+        <SectionHeading
+          eyebrow="The wider academy"
+          title="A shared commitment to development"
+          intro="Players, coaches, staff and supporters all contribute to an environment where young people can learn and grow."
+          light
+        />
+        <Button href="/academy/" variant="section"
+          >Discover More About Dante</Button
+        >
+      </div>
+      <figure class="closing-image">
+        <Image
+          src={closingGalleryImage.image}
+          alt={closingGalleryImage.alt}
+          widths={[720, 1080, 1440]}
+          sizes="(max-width: 640px) calc(100vw - 28px), 55vw"
+          loading="lazy"
+          style={`object-position:${closingGalleryImage.objectPosition}`}
+        />
+        <span class="dante-diagonal-accent" aria-hidden="true"></span>
+      </figure>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .gallery-intro {
+    border-bottom: 1px solid var(--grey-200);
+  }
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8%;
+    align-items: start;
+  }
+  .intro-grid :global(.section-heading) {
+    margin-bottom: 0;
+  }
+  .intro-copy {
+    max-width: 620px;
+  }
+  .intro-copy p:first-child {
+    margin-top: 0;
+  }
+  .lead {
+    font: 600 1.45rem/1.4 'Barlow Condensed';
+    text-transform: uppercase;
+  }
+  .featured-section {
+    padding: 0 0 var(--section-space);
+    background: white;
+  }
+  .featured-image,
+  .gallery-card,
+  .closing-image {
+    margin: 0;
+  }
+  .featured-image {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16/7;
+    background: var(--navy-900);
+  }
+  .featured-image :global(img),
+  .gallery-image :global(img),
+  .closing-image :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .featured-image figcaption {
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 80px 32px 28px;
+    background: linear-gradient(transparent, rgb(7 12 36 / 88%));
+    color: white;
+  }
+  .featured-image figcaption strong,
+  .featured-image figcaption span {
+    display: block;
+  }
+  .featured-image figcaption strong {
+    font: 700 2rem/1 'Barlow Condensed';
+    text-transform: uppercase;
+  }
+  .featured-image figcaption span {
+    max-width: 540px;
+    margin-top: 8px;
+    color: #d5d7df;
+    font-size: 0.86rem;
+  }
+  .photo-story {
+    background: var(--off-white);
+  }
+  .story-heading {
+    max-width: 820px;
+    margin-bottom: var(--section-header-space);
+  }
+  .story-heading h2 {
+    margin: 0;
+    font: 700 clamp(2.8rem, 6vw, 5rem)/0.9 'Barlow Condensed';
+    text-transform: uppercase;
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 24px;
+    align-items: start;
+  }
+  .gallery-card {
+    min-width: 0;
+    grid-column: span 4;
+  }
+  .gallery-card.span-half {
+    grid-column: span 6;
+  }
+  .gallery-card.span-wide {
+    grid-column: span 8;
+  }
+  .gallery-card.span-portrait {
+    grid-column: span 4;
+  }
+  .gallery-image {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    background: var(--navy-900);
+  }
+  .span-half .gallery-image {
+    aspect-ratio: 3/2;
+  }
+  .span-wide .gallery-image {
+    aspect-ratio: 16/9;
+  }
+  .span-portrait .gallery-image {
+    aspect-ratio: 4/5;
+  }
+  .gallery-card figcaption {
+    padding-top: 12px;
+    font: 700 0.86rem 'Barlow Condensed';
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .closing-grid {
+    display: grid;
+    grid-template-columns: 0.75fr 1.25fr;
+    gap: 7%;
+    align-items: center;
+  }
+  .closing-grid :global(.section-heading) {
+    margin-bottom: 28px;
+  }
+  .closing-image {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16/10;
+  }
+  @media (max-width: 900px) {
+    .gallery-card,
+    .gallery-card.span-portrait {
+      grid-column: span 6;
+    }
+    .gallery-card.span-wide,
+    .gallery-card.span-half {
+      grid-column: span 12;
+    }
+    .closing-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+  @media (max-width: 640px) {
+    .intro-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    .featured-image {
+      aspect-ratio: 4/3;
+    }
+    .featured-image figcaption {
+      padding: 64px 20px 20px;
+    }
+    .gallery-grid {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+    .gallery-card,
+    .gallery-card.span-half,
+    .gallery-card.span-wide,
+    .gallery-card.span-portrait {
+      grid-column: auto;
+    }
+    .gallery-image,
+    .span-half .gallery-image,
+    .span-wide .gallery-image {
+      aspect-ratio: 4/3;
+    }
+    .span-portrait .gallery-image {
+      aspect-ratio: 4/5;
+    }
+    .closing-grid :global(.button) {
+      width: 100%;
+    }
+    .closing-image {
+      aspect-ratio: 4/3;
+    }
+  }
+</style>

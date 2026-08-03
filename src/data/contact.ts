@@ -10,13 +10,10 @@ export const contact = {
     { display: '+234 906 743 9197', href: 'tel:+2349067439197' },
   ],
   email: 'danteacademy01@gmail.com',
-} as const;
-
-export const socialLinks = {
-  instagram: '',
-  facebook: '',
-  tiktok: '',
-  youtube: '',
-  x: '',
-  whatsapp: '',
+  emailHref: 'mailto:danteacademy01@gmail.com',
+  programmeEnquiryHref:
+    'mailto:danteacademy01@gmail.com?subject=Programme%20Enquiry',
+  partnershipEnquiryHref:
+    'mailto:danteacademy01@gmail.com?subject=Partnership%20Enquiry',
+  directionsUrl: '',
 } as const;

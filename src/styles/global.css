@@ -273,6 +273,23 @@ button:focus-visible {
   color: #b9bdca;
   font-size: 0.9rem;
 }
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-bottom: 32px;
+}
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: #b9bdca;
+  font-size: 0.78rem;
+  text-transform: capitalize;
+}
+.social-links a:hover {
+  color: white;
+}
 .brand--footer img {
   width: 78px;
   height: 78px;

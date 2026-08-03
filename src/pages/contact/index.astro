@@ -1,54 +1,371 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import InternalHero from '../../components/InternalHero.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import Button from '../../components/Button.astro';
+import FootballMarker from '../../components/shared/FootballMarker.astro';
+import ContactIcon from '../../components/shared/ContactIcon.astro';
+import SocialIcon from '../../components/shared/SocialIcon.astro';
+import contactHero from '../../assets/images/gallery/recent-event/coach-instruction-01.jpg';
 import { contact } from '../../data/contact';
+import { socialLinks } from '../../data/social';
+
+const configuredSocials = Object.entries(socialLinks).filter(([, url]) => url);
 ---
 
 <BaseLayout
   title="Contact | Dante Football Academy"
-  description="Contact Dante Football Academy in Ibadan about programmes and partnerships."
+  description="Contact Dante Football Academy in Ibadan about programmes, partnerships and general enquiries."
 >
-  <section class="page-hero">
+  <InternalHero
+    eyebrow="Contact Dante Football Academy"
+    title="Let’s start a conversation."
+    description="Contact the academy about our programmes, partnerships or general enquiries."
+    image={contactHero}
+    objectPosition="50% 42%"
+  />
+
+  <section class="section contact-main section--white">
     <div class="container">
-      <p class="eyebrow">Get in touch</p><h1>Contact</h1><p>
-        Speak with the academy about player development, programmes or
-        partnership opportunities.
-      </p>
+      <SectionHeading
+        eyebrow="Get in touch"
+        title="Speak directly with the academy"
+        intro="Choose the contact method that works best for you. Every action below connects directly to the academy."
+      />
+      <div class="contact-grid">
+        {
+          contact.phones.map((phone, index) => (
+            <a class="contact-card" href={phone.href}>
+              <ContactIcon name="phone" />
+              <span>{index === 0 ? 'Telephone one' : 'Telephone two'}</span>
+              <strong>{phone.display}</strong>
+              <small>Call the Academy</small>
+            </a>
+          ))
+        }
+        <a class="contact-card" href={contact.emailHref}>
+          <ContactIcon name="email" />
+          <span>Email</span>
+          <strong>{contact.email}</strong>
+          <small>Send an Email</small>
+        </a>
+      </div>
     </div>
   </section>
-  <section class="shell-content section--white">
-    <div class="container contact-list">
-      <address>
-        {contact.addressLines.map((line) => <span>{line}</span>)}
-      </address><div>
+
+  <section class="section enquiry-section section--navy">
+    <div class="container enquiry-grid">
+      <article>
+        <FootballMarker variant="light" />
+        <p class="eyebrow">Programme enquiries</p>
+        <h2>Find the right development level</h2>
+        <p>
+          Ask about the Grassroots, Development or Elite programme and discuss
+          the most appropriate level for a young player.
+        </p>
+        <Button href={contact.programmeEnquiryHref} variant="section">
+          Enquire About a Programme
+        </Button>
+      </article>
+      <article>
+        <FootballMarker variant="light" />
+        <p class="eyebrow">Partnership enquiries</p>
+        <h2>Start a partnership conversation</h2>
+        <p>
+          Contact the academy to discuss an appropriate organisation or
+          community partnership.
+        </p>
+        <Button href={contact.partnershipEnquiryHref} variant="section">
+          Discuss a Partnership
+        </Button>
+      </article>
+    </div>
+  </section>
+
+  <section class="section location-section">
+    <div class="container location-grid">
+      <div>
+        <SectionHeading
+          eyebrow="Our location"
+          title="Visit us in Ibadan"
+          intro="The academy is based in Ibadan, Oyo State. Please contact the academy directly before planning your visit."
+        />
+      </div>
+      <div class="address-panel">
+        <ContactIcon name="location" />
+        <p class="eyebrow">Academy address</p>
+        <address>
+          {contact.addressLines.map((line) => <span>{line}</span>)}
+        </address>
         {
-          contact.phones.map((phone) => (
-            <a href={phone.href}>{phone.display}</a>
-          ))
-        }<a href={`mailto:${contact.email}`}>{contact.email}</a>
+          contact.directionsUrl && (
+            <Button href={contact.directionsUrl} variant="section">
+              Get Directions
+            </Button>
+          )
+        }
+      </div>
+    </div>
+  </section>
+
+  {
+    configuredSocials.length > 0 && (
+      <section class="section social-section section--white">
+        <div class="container">
+          <SectionHeading
+            eyebrow="Follow Dante"
+            title="Connect with the academy"
+          />
+          <div class="social-grid">
+            {configuredSocials.map(([platform, url]) => (
+              <a href={url} rel="noreferrer">
+                <SocialIcon name={platform} />
+                <span>{platform}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <section class="contact-close">
+    <div class="container close-grid">
+      <div>
+        <p class="eyebrow">Ready when you are</p>
+        <h2>Let’s continue the conversation.</h2>
+      </div>
+      <div class="close-actions">
+        <Button href={contact.phones[0].href} variant="light">
+          Call the Academy
+        </Button>
+        <Button href={contact.emailHref} variant="outline">Send an Email</Button
+        >
       </div>
     </div>
   </section>
 </BaseLayout>
+
 <style>
-  .contact-list {
+  .contact-main :global(.section-heading) {
+    max-width: 760px;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+  .contact-card {
+    display: flex;
+    min-width: 0;
+    min-height: 240px;
+    padding: 28px;
+    border: 1px solid var(--grey-200);
+    background: var(--off-white);
+    flex-direction: column;
+    transition:
+      border-color 0.2s ease,
+      transform 0.2s ease;
+  }
+  .contact-card:hover {
+    border-color: var(--orange-500);
+    transform: translateY(-2px);
+  }
+  .contact-card :global(.contact-icon) {
+    color: var(--orange-500);
+  }
+  .contact-card > span {
+    margin-top: 36px;
+    color: var(--grey-600);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .contact-card strong {
+    overflow-wrap: anywhere;
+    margin-top: 8px;
+    font: 700 clamp(1.35rem, 2.4vw, 2rem)/1.05 'Barlow Condensed';
+  }
+  .contact-card small {
+    margin-top: auto;
+    padding-top: 24px;
+    color: var(--orange-600);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .enquiry-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 40px;
+    gap: 1px;
+    background: #303650;
+    border: 1px solid #303650;
   }
-  .contact-list address,
-  .contact-list span,
-  .contact-list a {
-    display: block;
+  .enquiry-grid article {
+    display: flex;
+    min-height: 430px;
+    padding: 40px;
+    background: var(--navy-950);
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .enquiry-grid .eyebrow {
+    margin-top: 40px;
+  }
+  .enquiry-grid h2 {
+    max-width: 540px;
+    margin: 0;
+    font: 700 clamp(2.5rem, 5vw, 4.3rem)/0.92 'Barlow Condensed';
+    text-transform: uppercase;
+  }
+  .enquiry-grid article > p:not(.eyebrow) {
+    max-width: 540px;
+    color: #b9bdca;
+  }
+  .enquiry-grid :global(.button) {
+    margin-top: auto;
+  }
+  .location-section {
+    background: #e8e6e0;
+  }
+  .location-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9%;
+    align-items: center;
+  }
+  .location-grid :global(.section-heading) {
+    margin-bottom: 0;
+  }
+  .address-panel {
+    position: relative;
+    overflow: hidden;
+    min-height: 390px;
+    padding: 40px;
+    background: var(--navy-950);
+    color: white;
+  }
+  .address-panel::after {
+    content: '';
+    position: absolute;
+    right: -35px;
+    bottom: 27px;
+    width: 52%;
+    height: 8px;
+    background: var(--orange-500);
+    transform: rotate(-28deg);
+    pointer-events: none;
+  }
+  .address-panel :global(.contact-icon) {
+    color: var(--orange-500);
+  }
+  .address-panel .eyebrow {
+    margin-top: 44px;
+  }
+  .address-panel address {
+    position: relative;
+    z-index: 1;
+    font: 700 clamp(1.45rem, 3vw, 2.2rem)/1.25 'Barlow Condensed';
     font-style: normal;
   }
-  .contact-list a {
-    color: var(--blue-700);
-    font-weight: 600;
-    margin-bottom: 10px;
+  .address-panel address span {
+    display: block;
   }
-  @media (max-width: 600px) {
-    .contact-list {
+  .address-panel :global(.button) {
+    position: relative;
+    z-index: 2;
+    margin-top: 28px;
+  }
+  .social-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .social-grid a {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 14px 20px;
+    border: 1px solid var(--grey-200);
+    font-weight: 700;
+    text-transform: capitalize;
+  }
+  .contact-close {
+    padding: var(--section-space) 0;
+    background: var(--orange-500);
+    color: white;
+  }
+  .contact-close .eyebrow {
+    color: var(--navy-950);
+  }
+  .close-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 40px;
+  }
+  .close-grid h2 {
+    max-width: 780px;
+    margin: 0;
+    font: 800 clamp(3rem, 7vw, 6rem)/0.88 'Barlow Condensed';
+    text-transform: uppercase;
+  }
+  .close-actions {
+    display: flex;
+    flex: 0 0 auto;
+    gap: 16px;
+  }
+  .contact-close :global(.button--outline) {
+    border-color: white;
+  }
+  @media (max-width: 900px) {
+    .contact-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .contact-card:last-child {
+      grid-column: 1 / -1;
+    }
+    .location-grid {
+      gap: 5%;
+    }
+    .close-grid {
+      display: block;
+    }
+    .close-actions {
+      margin-top: 32px;
+    }
+  }
+  @media (max-width: 640px) {
+    .contact-grid,
+    .enquiry-grid,
+    .location-grid {
       grid-template-columns: 1fr;
+    }
+    .contact-card:last-child {
+      grid-column: auto;
+    }
+    .contact-card {
+      min-height: 210px;
+      padding: 24px;
+    }
+    .enquiry-grid article {
+      min-height: 390px;
+      padding: 28px 24px;
+    }
+    .location-grid {
+      gap: 32px;
+    }
+    .address-panel {
+      min-height: 360px;
+      padding: 28px 24px;
+    }
+    .close-actions {
+      flex-direction: column;
+      gap: 14px;
+    }
+    .close-actions :global(.button) {
+      width: 100%;
     }
   }
 </style>
