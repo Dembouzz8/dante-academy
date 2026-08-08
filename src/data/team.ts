@@ -8,8 +8,8 @@ import azeezIbrahim from '../assets/images/team/azeez-ibrahim.jpg';
 
 export const team = [
   {
-    name: 'Amb. Dada Iseoluwa Akinoluwa',
-    role: 'Director',
+    name: 'Dada Iseoluwa Akinoluwa',
+    role: 'Founder & Executive Director',
     image: ambDadaIseoluwaAkinoluwa,
     objectPosition: '50% 42%',
   },

@@ -49,6 +49,17 @@ const configuredSocials = Object.entries(socialLinks).filter(([, url]) => url);
           <strong>{contact.email}</strong>
           <small>Send an Email</small>
         </a>
+        <a
+          class="contact-card"
+          href={contact.whatsapp.href}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <SocialIcon name="whatsapp" />
+          <span>WhatsApp</span>
+          <strong>{contact.whatsapp.display}</strong>
+          <small>Chat with Dante</small>
+        </a>
       </div>
     </div>
   </section>
@@ -60,8 +71,8 @@ const configuredSocials = Object.entries(socialLinks).filter(([, url]) => url);
         <p class="eyebrow">Programme enquiries</p>
         <h2>Find the right development level</h2>
         <p>
-          Ask about the Grassroots, Development or Elite programme and discuss
-          the most appropriate level for a young player.
+          Ask about the pathway from U9 to Senior development and discuss the
+          most appropriate stage for a player.
         </p>
         <Button href={contact.programmeEnquiryHref} variant="section">
           Enquire About a Programme
@@ -97,6 +108,7 @@ const configuredSocials = Object.entries(socialLinks).filter(([, url]) => url);
         <address>
           {contact.addressLines.map((line) => <span>{line}</span>)}
         </address>
+        <p class="registration">RC 9492050</p>
         {
           contact.directionsUrl && (
             <Button href={contact.directionsUrl} variant="section">
@@ -152,7 +164,7 @@ const configuredSocials = Object.entries(socialLinks).filter(([, url]) => url);
   }
   .contact-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 20px;
   }
   .contact-card {
@@ -171,7 +183,8 @@ const configuredSocials = Object.entries(socialLinks).filter(([, url]) => url);
     border-color: var(--orange-500);
     transform: translateY(-2px);
   }
-  .contact-card :global(.contact-icon) {
+  .contact-card :global(.contact-icon),
+  .contact-card :global(.social-icon) {
     color: var(--orange-500);
   }
   .contact-card > span {
@@ -272,6 +285,12 @@ const configuredSocials = Object.entries(socialLinks).filter(([, url]) => url);
   .address-panel address span {
     display: block;
   }
+  .registration {
+    position: relative;
+    z-index: 1;
+    color: var(--orange-500);
+    font-weight: 700;
+  }
   .address-panel :global(.button) {
     position: relative;
     z-index: 2;
@@ -324,7 +343,7 @@ const configuredSocials = Object.entries(socialLinks).filter(([, url]) => url);
       grid-template-columns: 1fr 1fr;
     }
     .contact-card:last-child {
-      grid-column: 1 / -1;
+      grid-column: auto;
     }
     .location-grid {
       gap: 5%;

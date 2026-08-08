@@ -1,6 +1,6 @@
 import type { ImageMetadata } from 'astro';
-import hero from '../assets/images/hero/dante-hero.jpeg';
-import potentialToProgression from '../assets/images/academy/potential-to-progression.png';
+import hero from '../assets/images/gallery/recent-event/training-action-10.jpg';
+import potentialToProgression from '../assets/images/gallery/recent-event/coach-instruction-02.jpg';
 import trainingGround from '../assets/images/gallery/recent-event/training-ground.jpg';
 import behindTheGame from '../assets/images/gallery/recent-event/behind-the-game.jpg';
 import moreThanFootball from '../assets/images/academy/more-than-football.jpg';
@@ -13,25 +13,11 @@ export type HomepageImage = {
 };
 
 export const homepageImages = {
-  hero: { image: hero, alt: '', objectPosition: '55% center' },
+  hero: { image: hero, alt: '', objectPosition: '50% 48%' },
   academyIntroduction: {
     image: moreThanFootball,
     alt: 'Academy players taking part in a structured training session',
-    objectPosition: '50% center',
-  },
-  programmes: {
-    grassroots: {
-      alt: 'Grassroots players developing fundamental football skills',
-      objectPosition: '50% center',
-    },
-    development: {
-      alt: 'Development players working together in training',
-      objectPosition: '50% center',
-    },
-    elite: {
-      alt: 'Elite players preparing for higher competitive levels',
-      objectPosition: '50% center',
-    },
+    objectPosition: '52% 45%',
   },
   pathway: {
     image: potentialToProgression,
@@ -52,7 +38,7 @@ export const homepageImages = {
   ],
   director: {
     image: directorPortrait,
-    alt: 'The Director of Dante Football Academy',
+    alt: 'Dada Iseoluwa Akinoluwa, Founder and Executive Director of Dante Football Academy',
     objectPosition: '50% 42%',
   },
 } as const;

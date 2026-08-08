@@ -1,9 +1,9 @@
 export const site = {
   name: 'Dante Football Academy',
-  legalName: 'Dante Sports Management & Academy Ltd',
+  legalName: 'Dante Sports Management and Academy Ltd',
   strapline: 'Football, education and character',
   location: 'Ibadan, Oyo State, Nigeria',
-  registrationNumber: '',
+  registrationNumber: 'RC 9492050',
 } as const;
 
 export const whyDante = [
@@ -34,8 +34,8 @@ export const pathway = [
   'Progression Opportunities',
 ] as const;
 
-export const directorMessage = `At Dante Football Academy, we believe talent flourishes when it is supported by discipline, education, mentorship and genuine opportunity.
+export const founderMessage = `At Dante Football Academy, we believe talent flourishes when it is supported by professional coaching, education, mentorship and genuine opportunity.
 
-Our responsibility is to create an environment where young players can develop their football ability, strengthen their character and prepare for the demands of life both on and off the pitch.
+Our purpose is to discover and develop young players while helping them grow in discipline, integrity, teamwork and leadership. We provide an environment where football ability and character can progress together, with support for the demands of life on and off the pitch.
 
-We are committed to building more than successful footballers. We are building confident young people, responsible leaders and future champions.`;
+We welcome players, parents, coaches and partners who share our commitment to creating responsible pathways from local communities towards appropriate opportunities in Nigerian and international football.`;

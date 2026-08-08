@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
-import logo from '../assets/brand/dante-logo.png';
+import corporateLogo from '../assets/brand/dante-logo.png';
+import academyLogo from '../assets/brand/dante-football-academy.png';
 import { academyLinks } from '../data/navigation';
 import { contact } from '../data/contact';
 import { socialLinks } from '../data/social';
@@ -13,7 +14,7 @@ const socials = Object.entries(socialLinks).filter(([, url]) => url);
   <div class="container footer-grid">
     <div class="footer-brand">
       <a class="brand brand--footer" href="/"
-        ><Image src={logo} alt="" width={84} height={84} /><span
+        ><Image src={academyLogo} alt="" width={84} height={84} /><span
           >Dante <b>Football Academy</b></span
         ></a
       >
@@ -37,7 +38,9 @@ const socials = Object.entries(socialLinks).filter(([, url]) => url);
         {contact.addressLines.map((line) => <span>{line}</span>)}
       </address>{
         contact.phones.map((phone) => <a href={phone.href}>{phone.display}</a>)
-      }<a href={`mailto:${contact.email}`}>{contact.email}</a>
+      }<a href={contact.whatsapp.href} target="_blank" rel="noopener noreferrer"
+        >WhatsApp: {contact.whatsapp.display}</a
+      ><a href={`mailto:${contact.email}`}>{contact.email}</a>
     </div>
   </div>
   {
@@ -53,7 +56,10 @@ const socials = Object.entries(socialLinks).filter(([, url]) => url);
     )
   }
   <div class="container footer-bottom">
-    <p>Operated by {site.legalName}</p><p>
+    <div class="footer-company">
+      <Image src={corporateLogo} alt="" width={46} height={46} />
+      <p>Operated by {site.legalName} | {site.registrationNumber}</p>
+    </div><p>
       © {new Date().getFullYear()}
       {site.name}
     </p>

@@ -6,12 +6,12 @@ import VisualPanel from '../../components/VisualPanel.astro';
 import TeamCard from '../../components/TeamCard.astro';
 import Button from '../../components/Button.astro';
 import FootballMarker from '../../components/shared/FootballMarker.astro';
-import hero from '../../assets/images/hero/dante-hero.jpeg';
+import hero from '../../assets/images/gallery/recent-event/training-action-10.jpg';
 import storyImage from '../../assets/images/academy/more-than-football.jpg';
-import pathwayImage from '../../assets/images/academy/potential-to-progression.png';
+import pathwayImage from '../../assets/images/gallery/recent-event/coach-instruction-02.jpg';
 import directorImage from '../../assets/images/team/amb-dada-iseoluwa-akinoluwa.jpeg';
 import { academyContent, pathwayDetails } from '../../data/academy';
-import { directorMessage, whyDante } from '../../data/site';
+import { site } from '../../data/site';
 import { team } from '../../data/team';
 ---
 
@@ -24,7 +24,7 @@ import { team } from '../../data/team';
     title="Developing players. Building character."
     description="Dante Football Academy combines structured football development, education, mentorship and discipline to help young players grow on and off the pitch."
     image={hero}
-    objectPosition="58% center"
+    objectPosition="50% 48%"
   />
 
   <section class="section section--white anchored" id="story">
@@ -42,6 +42,8 @@ import { team } from '../../data/team';
           mentorship and discipline. We want young players to become confident
           in their ability, responsible in their choices and prepared for
           appropriate opportunities in football and in life.
+        </p><p class="company-line">
+          {site.legalName} | {site.registrationNumber}
         </p><ul class="story-list">
           {academyContent.storyPoints.map((point) => <li>{point}</li>)}
         </ul>
@@ -49,7 +51,7 @@ import { team } from '../../data/team';
         label="Football, education and character"
         image={storyImage}
         alt="A coach engaging with young players during an academy session"
-        objectPosition="50% center"
+        objectPosition="52% 45%"
       />
     </div>
   </section>
@@ -60,16 +62,20 @@ import { team } from '../../data/team';
         label="Leadership with purpose"
         variant="portrait"
         image={directorImage}
-        alt="Amb. Dada Iseoluwa Akinoluwa, Director of Dante Football Academy"
+        alt="Dada Iseoluwa Akinoluwa, Founder and Executive Director of Dante Football Academy"
         objectPosition="50% 42%"
       /><div>
         <SectionHeading
-          eyebrow="Director’s message"
+          eyebrow="Founder’s message"
           title="Building players. Shaping people."
         />{
-          directorMessage.split('\n\n').map((paragraph) => <p>{paragraph}</p>)
+          academyContent.founderMessage
+            .split('\n\n')
+            .map((paragraph) => <p>{paragraph}</p>)
         }<div class="signature">
-          <strong>Amb. Dada Iseoluwa Akinoluwa</strong><span>Director</span>
+          <strong>Dada Iseoluwa Akinoluwa</strong><span
+            >Founder &amp; Executive Director</span
+          >
         </div>
       </div>
     </div>
@@ -79,9 +85,14 @@ import { team } from '../../data/team';
     <div class="container">
       <SectionHeading
         eyebrow="Our direction"
-        title="Mission and vision"
+        title="Purpose, mission and vision"
         light
       /><div class="mission-grid">
+        <article>
+          <FootballMarker variant="light" /><h3>Our purpose</h3><p>
+            {academyContent.purpose}
+          </p>
+        </article>
         <article>
           <FootballMarker variant="light" /><h3>Our mission</h3><p>
             {academyContent.mission}
@@ -111,11 +122,11 @@ import { team } from '../../data/team';
       <div>
         <SectionHeading
           eyebrow="Football philosophy"
-          title="Develop the whole player"
-          intro="Football growth is strongest when technical learning, intelligent decision-making and personal responsibility develop together."
+          title="Talent is universal, but opportunity is not"
+          intro="Our philosophy connects football development with education, integrity, community and opportunity."
         /><div class="philosophy-list">
           {
-            academyContent.philosophy.map((item) => (
+            academyContent.beliefs.map((item) => (
               <div>
                 <>
                   <FootballMarker variant="dark" />
@@ -142,7 +153,7 @@ import { team } from '../../data/team';
         intro="Four connected priorities shape the academy environment and every player’s experience."
       /><div class="why-list">
         {
-          whyDante.map((item) => (
+          academyContent.pillars.map((item) => (
             <article>
               <>
                 <FootballMarker variant="dark" />
@@ -157,6 +168,37 @@ import { team } from '../../data/team';
           ))
         }
       </div>
+    </div>
+  </section>
+
+  <section class="section section--navy development-framework">
+    <div class="container framework-grid">
+      <SectionHeading
+        eyebrow="Football and education"
+        title="Preparing players for football and for life"
+        intro="Football development is one part of player development. We encourage players to value education, communication, teamwork, character and leadership as preparation for life beyond the game."
+        light
+      />
+      <div class="editorial-statement">
+        <p>Talent opens the door. Character keeps it open.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--white">
+    <div class="container scouting-grid">
+      <SectionHeading
+        eyebrow="Scouting and development"
+        title="Wide reach. Local roots."
+        intro="Player evaluation can combine observation and appropriate data, considering technical ability, tactical awareness, physical potential, football intelligence, coachability, character, discipline, work rate and resilience. Selection never guarantees a particular outcome."
+      />
+      <ul class="principle-list">
+        {
+          academyContent.scoutingPrinciples.map((principle) => (
+            <li>{principle}</li>
+          ))
+        }
+      </ul>
     </div>
   </section>
 
@@ -182,12 +224,23 @@ import { team } from '../../data/team';
     </div>
   </section>
 
+  <section class="section community-section">
+    <div class="container community-grid">
+      <SectionHeading
+        eyebrow="Community impact"
+        title="Development that reaches beyond the pitch"
+        intro="DANTE aims to support youth development, positive role models and stronger connections with families, schools, coaches, local businesses and community organisations."
+      />
+      <p class="community-closing">{academyContent.communityClosing}</p>
+    </div>
+  </section>
+
   <section class="section section--navy anchored" id="team">
     <div class="container">
       <SectionHeading
         eyebrow="Leadership and management"
         title="A team committed to development"
-        intro="The academy’s provisional leadership and management team."
+        intro="The academy’s leadership and management team works together to guide its sporting, administrative and organisational development."
         light
       /><div class="full-team-grid">
         {team.map((member) => <TeamCard {...member} />)}
@@ -230,11 +283,47 @@ import { team } from '../../data/team';
   .story-grid,
   .director-grid,
   .philosophy-grid,
-  .welfare-grid {
+  .welfare-grid,
+  .framework-grid,
+  .scouting-grid,
+  .community-grid {
     display: grid;
     grid-template-columns: 1.05fr 0.95fr;
     gap: 8%;
     align-items: center;
+  }
+  .company-line {
+    color: var(--orange-600);
+    font-weight: 700;
+  }
+  .editorial-statement {
+    padding: 36px;
+    border-left: 4px solid var(--orange-500);
+    background: var(--navy-900);
+  }
+  .editorial-statement p,
+  .community-closing {
+    margin: 0;
+    font: 700 clamp(2rem, 4vw, 3.6rem)/1 'Barlow Condensed';
+    text-transform: uppercase;
+  }
+  .principle-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    border-top: 1px solid var(--grey-200);
+  }
+  .principle-list li {
+    padding: 15px 0;
+    border-bottom: 1px solid var(--grey-200);
+    font: 700 1.1rem 'Barlow Condensed';
+    text-transform: uppercase;
+  }
+  .community-section {
+    background: #e8e6e0;
+  }
+  .community-closing {
+    color: var(--navy-900);
   }
   .story-grid > .visual-panel {
     min-height: 650px;
@@ -285,7 +374,7 @@ import { team } from '../../data/team';
   }
   .mission-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     border: 1px solid #2a304b;
   }
   .mission-grid article {
@@ -463,12 +552,22 @@ import { team } from '../../data/team';
   @media (max-width: 900px) {
     .story-grid,
     .director-grid,
-    .philosophy-grid {
+    .philosophy-grid,
+    .framework-grid,
+    .scouting-grid,
+    .community-grid {
       grid-template-columns: 1fr 1fr;
       gap: 5%;
     }
     .mission-grid article {
       padding: 32px;
+    }
+    .mission-grid {
+      grid-template-columns: 1fr;
+    }
+    .mission-grid article + article {
+      border-top: 1px solid #2a304b;
+      border-left: 0;
     }
     .values ol {
       grid-template-columns: repeat(3, 1fr);
@@ -488,7 +587,10 @@ import { team } from '../../data/team';
   @media (max-width: 640px) {
     .story-grid,
     .director-grid,
-    .philosophy-grid {
+    .philosophy-grid,
+    .framework-grid,
+    .scouting-grid,
+    .community-grid {
       grid-template-columns: 1fr;
       gap: 38px;
     }

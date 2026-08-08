@@ -8,14 +8,14 @@ import FootballMarker from '../../components/shared/FootballMarker.astro';
 import {
   programmes,
   developmentApproach,
-  developedQualities,
+  developmentDimensions,
   playerWelfareFeature,
 } from '../../data/programmes';
 ---
 
 <BaseLayout
   title="Programmes | Dante Football Academy"
-  description="Grassroots, Development and Elite football programmes for young players aged U10 to U19."
+  description="A connected football development pathway from U9 to Senior level at Dante Football Academy."
 >
   <InternalHero
     eyebrow="Our programmes"
@@ -27,16 +27,16 @@ import {
     <div class="container intro-grid">
       <SectionHeading
         eyebrow="Player development"
-        title="Three levels. One connected journey."
+        title="Five stages. One connected journey."
       /><div>
         <p class="lead">
           Every programme has a clear purpose, appropriate expectations and a
           focus on long-term growth.
         </p><p>
           Players build their football ability alongside confidence, discipline,
-          teamwork and understanding of the game. Programme details such as
-          schedules, fees and joining requirements will be shared directly by
-          the academy when confirmed.
+          teamwork and understanding of the game. Training schedules, assessment
+          dates and applicable fees are provided directly following an initial
+          enquiry.
         </p>
       </div>
     </div>
@@ -74,13 +74,18 @@ import {
                 <>
                   <p class="eyebrow">Programme level</p>
                   <div class="level-title">
-                    <>
-                      <h2>{programme.name}</h2>
-                      <span>{programme.ages}</span>
-                    </>
+                    <h2>{programme.name}</h2>
+                  </div>
+                  <div class="squad-list">
+                    {programme.squads.map((item) => (
+                      <div>
+                        <strong>{item.squad}</strong>
+                        <span>{item.ages}</span>
+                      </div>
+                    ))}
                   </div>
                   <p>{programme.description}</p>
-                  <h3>{index === 2 ? 'Provides' : 'Builds'}</h3>
+                  <h3>Development emphasis</h3>
                   <ul>
                     {programme.outcomes.map((outcome) => (
                       <li>{outcome}</li>
@@ -124,20 +129,21 @@ import {
     <div class="container qualities-grid">
       <div>
         <SectionHeading
-          eyebrow="On and off the ball"
-          title="Skills and qualities developed"
-          intro="Football ability grows alongside the habits that help young people learn, communicate and contribute to a team."
+          eyebrow="Player development framework"
+          title="Four dimensions of development"
+          intro="The emphasis develops progressively and appropriately through the academy pathway. Individual examples are not a guarantee of identical provision for every age group."
         />
-      </div><ol>
+      </div><div class="dimension-list">
         {
-          developedQualities.map((quality) => (
-            <li>
+          developmentDimensions.map((dimension) => (
+            <article>
               <FootballMarker variant="dark" />
-              {quality}
-            </li>
+              <h3>{dimension.title}</h3>
+              <p>{dimension.items.join(', ')}.</p>
+            </article>
           ))
         }
-      </ol>
+      </div>
     </div>
   </section>
 
@@ -159,12 +165,13 @@ import {
           eyebrow="Education and player welfare"
           title="Development beyond football"
         /><p>
-          The academy’s responsibility extends beyond performance. We encourage
-          character, responsibility, education, respect and wellbeing alongside
-          football development.
+          Football development is only one part of player development. We
+          encourage players to value education, character, communication,
+          teamwork and leadership alongside their work on the pitch.
         </p><p>
           Clear communication with parents and guardians supports a positive
-          environment in which young players can learn with confidence.
+          environment in which young players can learn with confidence and
+          prepare for life beyond football.
         </p>
       </div>
     </div>
@@ -281,6 +288,28 @@ import {
     font-weight: 700;
     text-transform: uppercase;
   }
+  .squad-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 18px;
+  }
+  .squad-list div {
+    display: flex;
+    min-width: 150px;
+    padding: 10px 14px;
+    border: 1px solid #c7c8cd;
+    flex-direction: column;
+  }
+  .squad-list strong {
+    font: 700 1rem 'Barlow Condensed';
+  }
+  .squad-list span {
+    color: var(--orange-600);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
   .level-content > p {
     margin: 26px 0;
     color: var(--grey-600);
@@ -335,7 +364,7 @@ import {
   .qualities {
     background: white;
   }
-  .qualities ol {
+  .dimension-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 0;
@@ -343,20 +372,19 @@ import {
     list-style: none;
     border-top: 1px solid var(--grey-200);
   }
-  .qualities li {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 18px 8px;
+  .dimension-list article {
+    padding: 20px 12px;
     border-bottom: 1px solid var(--grey-200);
-    font: 700 1.05rem 'Barlow Condensed';
+  }
+  .dimension-list h3 {
+    margin: 12px 0 6px;
+    font: 700 1.15rem 'Barlow Condensed';
     text-transform: uppercase;
   }
-  .qualities li span {
-    display: inline-block;
-    width: 34px;
-    color: var(--orange-500);
-    font: 500 0.62rem Inter;
+  .dimension-list p {
+    margin: 0;
+    color: var(--grey-600);
+    font-size: 0.82rem;
   }
   .welfare {
     background: #e8e6e0;
@@ -428,6 +456,10 @@ import {
     .level-title {
       display: block;
     }
+    .level-title h2 {
+      overflow-wrap: anywhere;
+      font-size: clamp(2.65rem, 12vw, 3.8rem);
+    }
     .level-title span {
       display: block;
       padding-top: 10px;
@@ -438,7 +470,7 @@ import {
     .approach-grid {
       grid-template-columns: 1fr 1fr;
     }
-    .qualities ol {
+    .dimension-list {
       grid-template-columns: 1fr;
     }
     .programme-cta .button,

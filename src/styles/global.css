@@ -175,7 +175,7 @@ button:focus-visible {
   border-bottom: 1px solid #222944;
 }
 .header-inner {
-  min-height: 86px;
+  min-height: 90px;
   display: flex;
   align-items: center;
   gap: 28px;
@@ -191,8 +191,8 @@ button:focus-visible {
   letter-spacing: 0.02em;
 }
 .brand img {
-  width: 62px;
-  height: 62px;
+  width: 64px;
+  height: 64px;
   object-fit: contain;
   flex: 0 0 auto;
   padding: 0;
@@ -305,6 +305,16 @@ button:focus-visible {
 }
 .footer-bottom p {
   margin: 0;
+}
+.footer-company {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.footer-company img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
 }
 .visual-panel {
   position: relative;
@@ -460,21 +470,21 @@ button:focus-visible {
     --section-header-space: 32px;
   }
   .container {
-    width: min(100% - 28px, var(--container));
+    width: min(calc(100% - 28px), var(--container));
   }
   .section {
     padding: var(--section-space) 0;
   }
   .header-inner {
-    min-height: 74px;
+    min-height: 78px;
   }
   .site-header {
     position: sticky;
     top: 0;
   }
   .brand img {
-    width: 50px;
-    height: 50px;
+    width: 52px;
+    height: 52px;
   }
   .brand {
     font-size: 1rem;

@@ -391,6 +391,7 @@ Use descriptive kebab-case filenames.
 
 Image requirements:
 
+- Public-facing football photography should use genuine, authorised DANTE imagery whenever available. Do not introduce AI-generated people or football scenes without explicit approval.
 - approved, sharp and varied images
 - no unnecessary duplicates
 - meaningful alt text

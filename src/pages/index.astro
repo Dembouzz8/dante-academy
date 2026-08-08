@@ -6,7 +6,7 @@ import SectionHeading from '../components/SectionHeading.astro';
 import VisualPanel from '../components/VisualPanel.astro';
 import FeatureImageCard from '../components/FeatureImageCard.astro';
 import FootballMarker from '../components/shared/FootballMarker.astro';
-import { directorMessage, pathway, whyDante } from '../data/site';
+import { founderMessage, pathway, whyDante } from '../data/site';
 import { programmes } from '../data/programmes';
 import { team } from '../data/team';
 import { homepageImages } from '../data/homepageImages';
@@ -14,7 +14,7 @@ import { homepageImages } from '../data/homepageImages';
 
 <BaseLayout
   title="Dante Football Academy | Ibadan, Nigeria"
-  description="Structured football development for young players aged U10 to U19 in Ibadan, Nigeria."
+  description="Structured football development for players from U9 to Senior level in Ibadan, Nigeria."
 >
   <section class="hero">
     <Picture
@@ -80,7 +80,7 @@ import { homepageImages } from '../data/homepageImages';
       <SectionHeading
         eyebrow="Our programmes"
         title="Built for every stage of the journey"
-        intro="Three progressive levels support players from their first foundations through advanced preparation."
+        intro="A connected pathway supports players from their first foundations through senior development."
         light
       />
       <div class="programme-grid">
@@ -94,7 +94,9 @@ import { homepageImages } from '../data/homepageImages';
                 <div class="programme-top">
                   <>
                     <FootballMarker variant="light" />
-                    <span>{programme.ages}</span>
+                    <span>
+                      {programme.squads.map((item) => item.squad).join(' and ')}
+                    </span>
                   </>
                 </div>
                 <h3>{programme.name}</h3>
@@ -193,12 +195,14 @@ import { homepageImages } from '../data/homepageImages';
         variant="portrait"
         {...homepageImages.director}
       /><div class="message-copy">
-        <p class="eyebrow">From the Director</p><h2>
+        <p class="eyebrow">From the Founder</p><h2>
           Building players.<br />Shaping people.
         </h2>{
-          directorMessage.split('\n\n').map((paragraph) => <p>{paragraph}</p>)
+          founderMessage.split('\n\n').map((paragraph) => <p>{paragraph}</p>)
         }<p class="signature">
-          <strong>Amb. Dada Iseoluwa Akinoluwa</strong><span>Director</span>
+          <strong>Dada Iseoluwa Akinoluwa</strong><span
+            >Founder &amp; Executive Director</span
+          >
         </p>
       </div>
     </div>
@@ -286,7 +290,7 @@ import { homepageImages } from '../data/homepageImages';
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 55% center;
+    object-position: 50% 48%;
   }
   .hero-overlay {
     position: absolute;
@@ -700,7 +704,7 @@ import { homepageImages } from '../data/homepageImages';
       align-items: center;
     }
     .hero :global(.hero-photo img) {
-      object-position: 52% center;
+      object-position: 50% 48%;
     }
     .hero-overlay {
       background:
@@ -720,9 +724,13 @@ import { homepageImages } from '../data/homepageImages';
     }
     .hero h1 {
       margin: 12px 0 20px;
-      font-size: clamp(2.85rem, 13.5vw, 3.45rem);
+      font-size: clamp(2.2rem, 10.5vw, 3.45rem);
       line-height: 0.88;
       letter-spacing: -0.025em;
+    }
+    .hero .eyebrow {
+      font-size: 0.64rem;
+      letter-spacing: 0.12em;
     }
     .hero-intro {
       margin-block: 0;

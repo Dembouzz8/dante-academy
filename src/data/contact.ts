@@ -3,7 +3,9 @@ export const contact = {
     'Glass House Adeleye,',
     'Opposite Beulah Academy,',
     'Along Iwo Road,',
-    'Ibadan, Oyo State, Nigeria',
+    'Ibadan,',
+    'Oyo State,',
+    'Nigeria',
   ],
   phones: [
     { display: '+234 806 251 7246', href: 'tel:+2348062517246' },
@@ -11,6 +13,10 @@ export const contact = {
   ],
   email: 'danteacademy01@gmail.com',
   emailHref: 'mailto:danteacademy01@gmail.com',
+  whatsapp: {
+    display: '+31 686 470 414',
+    href: 'https://wa.me/31686470414',
+  },
   programmeEnquiryHref:
     'mailto:danteacademy01@gmail.com?subject=Programme%20Enquiry',
   partnershipEnquiryHref:
