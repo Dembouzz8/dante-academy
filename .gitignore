@@ -4,4 +4,5 @@ dist/
 .env
 .env.*
 media-source/
-
+# Source/reference documents used during website development
+reference-documents/

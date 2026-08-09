@@ -6,6 +6,7 @@ import { academyLinks } from '../data/navigation';
 import { contact } from '../data/contact';
 import { socialLinks } from '../data/social';
 import { site } from '../data/site';
+import { policyLinks } from '../data/policies';
 import SocialIcon from './shared/SocialIcon.astro';
 const socials = Object.entries(socialLinks).filter(([, url]) => url);
 ---
@@ -31,6 +32,11 @@ const socials = Object.entries(socialLinks).filter(([, url]) => url);
     <div>
       <h2>The Academy</h2>{
         academyLinks.map((item) => <a href={item.href}>{item.label}</a>)
+      }
+    </div>
+    <div>
+      <h2>Policies &amp; safeguarding</h2>{
+        policyLinks.map((item) => <a href={item.href}>{item.label}</a>)
       }
     </div>
     <div>

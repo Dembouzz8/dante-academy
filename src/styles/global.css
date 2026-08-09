@@ -247,8 +247,8 @@ button:focus-visible {
 }
 .footer-grid {
   display: grid;
-  grid-template-columns: 2fr repeat(3, 1fr);
-  gap: 60px;
+  grid-template-columns: minmax(240px, 1.65fr) repeat(4, minmax(130px, 1fr));
+  gap: clamp(28px, 4vw, 56px);
   padding-bottom: 54px;
 }
 .footer-grid h2 {

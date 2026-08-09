@@ -1,0 +1,367 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import InternalHero from '../../components/InternalHero.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import Button from '../../components/Button.astro';
+import FootballMarker from '../../components/shared/FootballMarker.astro';
+import hero from '../../assets/images/gallery/recent-event/coach-instruction-01.jpg';
+import supportImage from '../../assets/images/gallery/recent-event/player-welfare-02.jpg';
+import { contact } from '../../data/contact';
+---
+
+<BaseLayout
+  title="Safeguarding & Child Protection | Dante Football Academy"
+  description="Dante Football Academy's commitment to a safe, respectful and inclusive environment for every young player."
+>
+  <InternalHero
+    eyebrow="Player welfare"
+    title="Safeguarding & Child Protection"
+    description="Every child matters. Every player deserves protection."
+    image={hero}
+    objectPosition="50% 48%"
+  />
+
+  <section class="section section--white commitment">
+    <div class="container intro-grid">
+      <SectionHeading
+        eyebrow="Our commitment"
+        title="A safe place to learn and grow"
+      />
+      <div class="lead-copy">
+        <p>
+          Dante Football Academy is committed to providing an environment where
+          every player is treated with care, dignity and respect.
+        </p>
+        <p>
+          Player welfare sits at the centre of football development and personal
+          development. Our commitment is to protect children, support education,
+          build character and strengthen the communities around them.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--navy every-child">
+    <div class="container child-grid">
+      <div>
+        <SectionHeading
+          eyebrow="Every child matters"
+          title="Potential is not defined by circumstance"
+          intro="We believe every child deserves the chance to dream, grow and be seen. Each young person should be valued for their commitment, character and willingness to develop."
+          light
+        />
+      </div>
+      <blockquote>
+        <p>
+          Every player can become a responsible person and a positive influence.
+        </p>
+      </blockquote>
+    </div>
+  </section>
+
+  <section class="section safe-environment">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Safe and inclusive environment"
+        title="Protection, inclusion and equal opportunity"
+        intro="The academy is committed to a safe, respectful and inclusive experience for every player."
+      />
+      <div class="principles-grid">
+        <article>
+          <FootballMarker variant="dark" />
+          <h3>Safe participation</h3>
+          <p>
+            A supportive environment for football, learning and personal growth.
+          </p>
+        </article>
+        <article>
+          <FootballMarker variant="dark" />
+          <h3>Equal opportunity</h3>
+          <p>
+            Equal opportunities regardless of background, religion, tribe,
+            gender or financial situation.
+          </p>
+        </article>
+        <article>
+          <FootballMarker variant="dark" />
+          <h3>Protection</h3>
+          <p>
+            Protection from all forms of abuse, bullying and discrimination.
+          </p>
+        </article>
+        <article>
+          <FootballMarker variant="dark" />
+          <h3>Positive role models</h3>
+          <p>
+            Positive role models who lead with integrity and professionalism.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--white dignity-section">
+    <div class="container dignity-grid">
+      <figure>
+        <Image
+          src={supportImage}
+          alt="An academy coach speaking with young players during a supervised session"
+          widths={[520, 760, 1040]}
+          sizes="(max-width: 700px) calc(100vw - 28px), 48vw"
+          loading="lazy"
+        />
+      </figure>
+      <div>
+        <SectionHeading
+          eyebrow="Respect, dignity and wellbeing"
+          title="A culture built on trust"
+          intro="Every child's rights, dignity and wellbeing deserve respect. We encourage trust, teamwork, unity and mutual respect throughout the academy environment."
+        />
+        <ul>
+          <li>Respect for coaches, teammates and others</li>
+          <li>Discipline, responsibility and resilience</li>
+          <li>Communication, teamwork and leadership</li>
+          <li>Positive behaviour on and off the pitch</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section education-section">
+    <div class="container education-grid">
+      <SectionHeading
+        eyebrow="Education and development"
+        title="Building better players by building better people"
+        intro="DANTE believes education comes before football. Football may open doors, while education provides young people with knowledge, confidence and skills for life on and off the pitch."
+      />
+      <div class="education-list">
+        <p>We encourage every player to:</p>
+        <ul>
+          <li>remain actively engaged in school;</li>
+          <li>value learning alongside athletic development;</li>
+          <li>develop discipline, leadership and responsibility;</li>
+          <li>build communication and teamwork skills;</li>
+          <li>become a positive role model; and</li>
+          <li>prepare for life beyond football.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section media-section section--navy">
+    <div class="container media-grid">
+      <SectionHeading
+        eyebrow="Photography and media protection"
+        title="Privacy, dignity and safety in every image"
+        intro="Particular care is taken when photographs or videos feature minors. Appropriate consent and responsible handling of personal information help protect young players."
+        light
+      />
+      <div class="media-links">
+        <a href="/photography-media/">Read the Photography &amp; Media Policy</a
+        >
+        <a href="/privacy/">Read the Privacy Policy</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--white concern-section">
+    <div class="container concern-grid">
+      <div>
+        <p class="eyebrow">Raising a concern</p>
+        <h2>Contact the Academy</h2>
+      </div>
+      <div>
+        <p>
+          Parents, players or others with a safeguarding concern should contact
+          the academy through its published contact channels. This page states
+          DANTE's safeguarding commitment and does not set out a complete formal
+          complaints procedure.
+        </p>
+        <a href={contact.emailHref}>{contact.email}</a>
+        <Button href="/contact/">View All Contact Details</Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .intro-grid,
+  .child-grid,
+  .dignity-grid,
+  .education-grid,
+  .media-grid,
+  .concern-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 8%;
+    align-items: center;
+  }
+  .intro-grid :global(.section-heading),
+  .education-grid :global(.section-heading),
+  .media-grid :global(.section-heading) {
+    margin-bottom: 0;
+  }
+  .lead-copy {
+    padding-left: 30px;
+    border-left: 3px solid var(--orange-500);
+  }
+  .lead-copy p:first-child {
+    margin-top: 0;
+    color: var(--navy-900);
+    font: 600 1.35rem/1.45 'Barlow Condensed';
+    text-transform: uppercase;
+  }
+  .lead-copy p:last-child {
+    margin-bottom: 0;
+  }
+  .child-grid blockquote {
+    margin: 0;
+    padding: 34px;
+    border-left: 4px solid var(--orange-500);
+    background: var(--navy-900);
+  }
+  .child-grid blockquote p {
+    margin: 0;
+    font: 700 clamp(2.2rem, 4vw, 3.6rem)/1 'Barlow Condensed';
+    text-transform: uppercase;
+  }
+  .safe-environment {
+    background: var(--off-white);
+  }
+  .principles-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 2px solid var(--navy-900);
+  }
+  .principles-grid article {
+    min-width: 0;
+    padding: 30px 24px;
+    border-right: 1px solid var(--grey-200);
+  }
+  .principles-grid article:last-child {
+    border-right: 0;
+  }
+  .principles-grid :global(.football-marker) {
+    color: var(--orange-500);
+  }
+  .principles-grid h3 {
+    margin: 44px 0 10px;
+    font: 700 1.45rem/1 'Barlow Condensed';
+    text-transform: uppercase;
+  }
+  .principles-grid p {
+    margin: 0;
+    color: var(--grey-600);
+    font-size: 0.84rem;
+  }
+  .dignity-grid figure {
+    margin: 0;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: var(--navy-900);
+  }
+  .dignity-grid figure :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .dignity-grid ul,
+  .education-list ul {
+    padding-left: 20px;
+  }
+  .dignity-grid li,
+  .education-list li {
+    margin: 9px 0;
+  }
+  .education-section {
+    background: #e8e6e0;
+  }
+  .education-list {
+    padding: 32px;
+    background: white;
+    border-top: 4px solid var(--purple-700);
+  }
+  .education-list p {
+    margin-top: 0;
+    color: var(--navy-900);
+    font-weight: 700;
+  }
+  .media-links {
+    display: grid;
+    gap: 1px;
+    background: #343a55;
+  }
+  .media-links a {
+    padding: 22px 24px;
+    background: var(--navy-900);
+    color: white;
+    font: 700 1rem 'Barlow Condensed';
+    text-transform: uppercase;
+  }
+  .media-links a:hover {
+    color: var(--orange-500);
+  }
+  .concern-grid {
+    align-items: start;
+  }
+  .concern-grid h2 {
+    margin: 0;
+    font: 700 clamp(3rem, 6vw, 5rem)/0.9 'Barlow Condensed';
+    text-transform: uppercase;
+  }
+  .concern-grid > div:last-child {
+    padding-left: 30px;
+    border-left: 3px solid var(--orange-500);
+  }
+  .concern-grid > div:last-child > a:not(.button) {
+    display: block;
+    width: fit-content;
+    margin: 20px 0;
+    color: var(--blue-700);
+    font-weight: 700;
+  }
+  @media (max-width: 900px) {
+    .principles-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .principles-grid article:nth-child(2) {
+      border-right: 0;
+    }
+    .principles-grid article:nth-child(n + 3) {
+      border-top: 1px solid var(--grey-200);
+    }
+  }
+  @media (max-width: 700px) {
+    .intro-grid,
+    .child-grid,
+    .dignity-grid,
+    .education-grid,
+    .media-grid,
+    .concern-grid {
+      grid-template-columns: 1fr;
+      gap: 38px;
+    }
+    .lead-copy,
+    .concern-grid > div:last-child {
+      padding-left: 20px;
+    }
+    .dignity-grid figure {
+      order: 2;
+    }
+    .principles-grid {
+      grid-template-columns: 1fr;
+    }
+    .principles-grid article,
+    .principles-grid article:nth-child(2) {
+      border-right: 0;
+      border-top: 1px solid var(--grey-200);
+    }
+    .principles-grid article:first-child {
+      border-top: 0;
+    }
+    .concern-grid :global(.button) {
+      width: 100%;
+    }
+  }
+</style>
