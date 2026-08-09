@@ -235,6 +235,25 @@ import { team } from '../../data/team';
     </div>
   </section>
 
+  <section class="section partnership-preview">
+    <div class="container partnership-preview-grid">
+      <SectionHeading
+        eyebrow="Partnerships"
+        title="Building opportunities through collaboration."
+        intro="Dante welcomes organisations, clubs, scouts, schools and community partners that share our commitment to player development, education and opportunity."
+      />
+      <div class="partnership-preview-action">
+        <p>
+          Explore responsible ways to support young players, football
+          development and positive community participation.
+        </p>
+        <Button href="/academy/partners/" variant="section"
+          >Explore Partnerships</Button
+        >
+      </div>
+    </div>
+  </section>
+
   <section class="section section--navy anchored" id="team">
     <div class="container">
       <SectionHeading
@@ -326,6 +345,32 @@ import { team } from '../../data/team';
   }
   .community-closing {
     color: var(--navy-900);
+  }
+  .partnership-preview {
+    background: var(--purple-700);
+  }
+  .partnership-preview-grid :global(.section-heading h2) {
+    color: var(--text-dark);
+  }
+  .partnership-preview-grid :global(.section-intro) {
+    color: var(--white);
+  }
+  .partnership-preview-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+    gap: 9%;
+    align-items: end;
+  }
+  .partnership-preview-grid :global(.section-heading) {
+    margin-bottom: 0;
+  }
+  .partnership-preview-action {
+    padding-left: 28px;
+    border-left: 3px solid var(--orange-500);
+  }
+  .partnership-preview-action p {
+    margin-top: 0;
+    color: var(--white);
   }
   .story-grid > .visual-panel {
     min-height: 650px;
@@ -570,6 +615,10 @@ import { team } from '../../data/team';
       grid-template-columns: 1fr 1fr;
       gap: 5%;
     }
+    .partnership-preview-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 5%;
+    }
     .mission-grid article {
       padding: 32px;
     }
@@ -604,6 +653,16 @@ import { team } from '../../data/team';
     .community-grid {
       grid-template-columns: 1fr;
       gap: 38px;
+    }
+    .partnership-preview-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .partnership-preview-action {
+      padding-left: 20px;
+    }
+    .partnership-preview-action :global(.button) {
+      width: 100%;
     }
     .story-grid > .visual-panel,
     .philosophy-grid > .visual-panel {
