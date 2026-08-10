@@ -1,0 +1,114 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import InternalHero from '../../components/InternalHero.astro';
+import FaqGroup from '../../components/FaqGroup.astro';
+import Button from '../../components/Button.astro';
+import { faqCategories } from '../../data/faq';
+---
+
+<BaseLayout
+  title="Frequently Asked Questions | Dante Football Academy"
+  description="Answers to common questions about Dante Football Academy programmes, player development, joining, safeguarding and enquiries."
+>
+  <InternalHero
+    eyebrow="Help & information"
+    title="Questions about Dante?"
+    description="Find answers to common questions about our programmes, player development, registration, safeguarding and academy enquiries."
+  />
+
+  <nav class="faq-nav" aria-label="FAQ categories">
+    <div class="container">
+      {
+        faqCategories.map((category) => (
+          <a href={`#${category.id}`}>{category.eyebrow}</a>
+        ))
+      }
+    </div>
+  </nav>
+
+  {
+    faqCategories.map((category, index) => (
+      <div id={category.id}>
+        <FaqGroup category={category} index={index} />
+      </div>
+    ))
+  }
+
+  <section class="faq-cta">
+    <div class="container cta-grid">
+      <div>
+        <p class="eyebrow">Need more help?</p><h2>Still have a question?</h2>
+      </div>
+      <div>
+        <p>
+          Contact the academy directly and our team will help with your enquiry.
+        </p><Button href="/contact/" variant="light">Contact the Academy</Button
+        >
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .faq-nav {
+    padding: 18px 0;
+    background: var(--navy-900);
+    color: var(--white);
+  }
+  .faq-nav .container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 24px;
+  }
+  .faq-nav a {
+    color: var(--grey-200);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .faq-nav a:hover {
+    color: var(--orange-500);
+  }
+  [id] {
+    scroll-margin-top: 20px;
+  }
+  .faq-cta {
+    padding: var(--section-space) 0;
+    background: var(--orange-500);
+    color: var(--white);
+  }
+  .cta-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+    gap: 8%;
+    align-items: end;
+  }
+  .faq-cta .eyebrow {
+    color: var(--navy-950);
+  }
+  h2 {
+    margin: 0;
+    font: 800 clamp(3.4rem, 7vw, 6rem)/0.88 'Barlow Condensed';
+    text-transform: uppercase;
+  }
+  .cta-grid > div:last-child {
+    padding-left: 26px;
+    border-left: 3px solid var(--navy-950);
+  }
+  .cta-grid p {
+    margin-top: 0;
+  }
+  @media (max-width: 640px) {
+    .cta-grid {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+    .cta-grid > div:last-child {
+      padding-left: 20px;
+    }
+    .cta-grid :global(.button) {
+      width: 100%;
+    }
+  }
+</style>

@@ -61,6 +61,11 @@ const configuredSocials = Object.entries(socialLinks).filter(([, url]) => url);
           <small>Chat with Dante</small>
         </a>
       </div>
+      <p class="faq-prompt">
+        Looking for quick answers? <a href="/faq/"
+          >View Frequently Asked Questions</a
+        >.
+      </p>
     </div>
   </section>
 
@@ -127,10 +132,16 @@ const configuredSocials = Object.entries(socialLinks).filter(([, url]) => url);
           <SectionHeading
             eyebrow="Follow Dante"
             title="Connect with the academy"
+            intro="Follow Dante Football Academy for academy activities, player development and community updates."
           />
           <div class="social-grid">
             {configuredSocials.map(([platform, url]) => (
-              <a href={url} rel="noreferrer">
+              <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Visit Dante Football Academy on ${platform}`}
+              >
                 <SocialIcon name={platform} />
                 <span>{platform}</span>
               </a>
@@ -207,6 +218,17 @@ const configuredSocials = Object.entries(socialLinks).filter(([, url]) => url);
     font-size: 0.72rem;
     font-weight: 700;
     text-transform: uppercase;
+  }
+  .faq-prompt {
+    margin: 28px 0 0;
+    color: var(--grey-600);
+  }
+  .faq-prompt a {
+    color: var(--text-dark);
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-color: var(--orange-500);
+    text-underline-offset: 4px;
   }
   .enquiry-grid {
     display: grid;

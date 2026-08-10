@@ -28,6 +28,7 @@ const socials = Object.entries(socialLinks).filter(([, url]) => url);
       <h2>Explore</h2><a href="/academy/">About Us</a><a href="/programmes/"
         >Programmes</a
       ><a href="/gallery/">Gallery</a><a href="/contact/">Contact</a>
+      <a href="/faq/">Frequently Asked Questions</a>
     </div>
     <div>
       <h2>The Academy</h2>{
@@ -53,7 +54,12 @@ const socials = Object.entries(socialLinks).filter(([, url]) => url);
     socials.length > 0 && (
       <div class="container social-links">
         {socials.map(([name, url]) => (
-          <a href={url} rel="noreferrer">
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Visit Dante Football Academy on ${name}`}
+          >
             <SocialIcon name={name} />
             <span>{name}</span>
           </a>
