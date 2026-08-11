@@ -28,10 +28,20 @@ const configuredSocials = Object.entries(socialLinks).filter(([, url]) => url);
   <section class="section contact-main section--white">
     <div class="container">
       <SectionHeading
-        eyebrow="Get in touch"
+        eyebrow="General enquiries"
         title="Speak directly with the academy"
         intro="Choose the contact method that works best for you. Every action below connects directly to the academy."
       />
+      <div class="registration-prompt">
+        <div>
+          <p class="eyebrow">Player registration</p>
+          <p>
+            Ready to join? Review the official registration information before
+            completing the player form.
+          </p>
+        </div>
+        <Button href="/register/" variant="section">Join the Academy</Button>
+      </div>
       <div class="contact-grid">
         {
           contact.phones.map((phone, index) => (
@@ -177,6 +187,23 @@ const configuredSocials = Object.entries(socialLinks).filter(([, url]) => url);
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 20px;
+  }
+  .registration-prompt {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 28px;
+    margin-bottom: 32px;
+    padding: 24px 28px;
+    background: var(--off-white);
+    border-left: 4px solid var(--orange-500);
+  }
+  .registration-prompt p {
+    max-width: 680px;
+    margin: 6px 0 0;
+  }
+  .registration-prompt .eyebrow {
+    margin: 0;
   }
   .contact-card {
     display: flex;
@@ -389,6 +416,14 @@ const configuredSocials = Object.entries(socialLinks).filter(([, url]) => url);
     .contact-card {
       min-height: 210px;
       padding: 24px;
+    }
+    .registration-prompt {
+      align-items: stretch;
+      flex-direction: column;
+      padding: 22px 20px;
+    }
+    .registration-prompt :global(.button) {
+      width: 100%;
     }
     .enquiry-grid article {
       min-height: 390px;

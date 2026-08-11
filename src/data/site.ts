@@ -4,6 +4,7 @@ export const site = {
   strapline: 'Football, education and character',
   location: 'Ibadan, Oyo State, Nigeria',
   registrationNumber: 'RC 9492050',
+  registrationUrl: 'https://tally.so/r/WO6vEJ',
 } as const;
 
 export const whyDante = [

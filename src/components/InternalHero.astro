@@ -35,6 +35,7 @@ const {
   <div class="internal-hero-overlay" aria-hidden="true"></div>
   <div class="container internal-hero-content">
     <p class="eyebrow">{eyebrow}</p><h1>{title}</h1><p>{description}</p>
+    <slot name="actions" />
   </div>
 </section>
 <style>
@@ -98,11 +99,17 @@ const {
     letter-spacing: -0.025em;
     text-transform: uppercase;
   }
-  .internal-hero-content > p:last-child {
+  .internal-hero-content > p:nth-of-type(2) {
     max-width: 650px;
     margin: 0;
     color: var(--off-white);
     font-size: 1.02rem;
+  }
+  .internal-hero-content :global(.hero-actions) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 28px;
   }
   @media (max-width: 640px) {
     .internal-hero {

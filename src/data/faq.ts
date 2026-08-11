@@ -56,8 +56,8 @@ export const faqCategories = [
         id: 'register',
         question: 'How do I register for Dante Football Academy?',
         answer:
-          "Registration will be completed through the academy's official registration process. Until the official registration link is published, prospective players and parents should contact the academy directly.",
-        link: { label: 'Contact the Academy', href: '/contact/' },
+          "Review the academy's registration information and development pathway before continuing to the official player registration form.",
+        link: { label: 'Join the Academy', href: '/register/' },
       },
       {
         id: 'selection',

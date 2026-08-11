@@ -1,0 +1,378 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import InternalHero from '../../components/InternalHero.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import ArrowUpRight from '../../components/shared/ArrowUpRight.astro';
+import FootballMarker from '../../components/shared/FootballMarker.astro';
+import registrationHero from '../../assets/images/gallery/recent-event/player-registration-02.jpg';
+import { programmes } from '../../data/programmes';
+import { site } from '../../data/site';
+
+const registrationSteps = [
+  {
+    title: 'Complete the form',
+    text: 'Complete the official Dante Football Academy registration form with the required player and contact information.',
+  },
+  {
+    title: 'Academy review',
+    text: 'The academy reviews the submitted information.',
+  },
+  {
+    title: 'Assessment & next steps',
+    text: 'Where appropriate, the academy will provide information regarding assessment, training schedules and next steps.',
+  },
+  {
+    title: 'Continue your journey',
+    text: 'Successful applicants can then receive the relevant academy information for their development stage.',
+  },
+] as const;
+
+const assessmentCriteria = [
+  'Technical ability',
+  'Tactical awareness',
+  'Physical potential',
+  'Football intelligence',
+  'Coachability',
+  'Character',
+  'Discipline',
+  'Work rate',
+  'Leadership potential',
+  'Mental resilience',
+] as const;
+---
+
+<BaseLayout
+  title="Join Dante Football Academy"
+  description="Review the Dante Football Academy registration process and continue to the official player registration form."
+>
+  <InternalHero
+    eyebrow="Join the academy"
+    title="Your journey starts here."
+    description="Take the first step towards joining Dante Football Academy. Review our development pathway and registration information before completing the official player registration form."
+    image={registrationHero}
+    objectPosition="50% 44%"
+  >
+    <div slot="actions" class="hero-actions">
+      <a
+        class="button button--primary"
+        href={site.registrationUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Start registration using the official external form"
+        >Start Registration <ArrowUpRight /></a
+      >
+    </div>
+  </InternalHero>
+
+  <section class="section eligibility section--white">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Who can register"
+        title="A pathway from U9 to Senior development"
+        intro="Choose the age group that reflects the player's current age. The academy will consider the appropriate development context during its review."
+      />
+      <div class="pathway-list">
+        {
+          programmes.map((programme) =>
+            programme.squads.map((squad) => (
+              <article>
+                <strong>{squad.squad}</strong>
+                <span>{squad.ages}</span>
+                <p>{programme.name}</p>
+              </article>
+            )),
+          )
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section process section--navy">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Registration process"
+        title="How registration works"
+        intro="Registration begins a review process. It does not guarantee selection or academy admission."
+        light
+      />
+      <ol class="process-grid">
+        {
+          registrationSteps.map((step, index) => (
+            <li>
+              <span>0{index + 1}</span>
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="section registration-details">
+    <div class="container details-grid">
+      <article class="important-info">
+        <FootballMarker variant="dark" />
+        <p class="eyebrow">Before you register</p>
+        <h2>Important registration information</h2>
+        <p>
+          Registration gives the academy the opportunity to review an
+          applicant's information. It does not guarantee selection, academy
+          admission, professional placement, trials with another club or a
+          professional contract.
+        </p>
+        <p>
+          Training schedules, assessment dates and applicable fees are provided
+          directly following an initial enquiry.
+        </p>
+        <p>
+          Parents or guardians registering a young player should ensure that the
+          information submitted is accurate and that appropriate consent is
+          provided where required.
+        </p>
+      </article>
+      <article class="assessment-info">
+        <p class="eyebrow">Player assessment</p>
+        <h2>What the academy may consider</h2>
+        <p>
+          Assessment considerations depend on the player and context. They may
+          include the following areas, without implying that every applicant
+          undergoes an identical assessment.
+        </p>
+        <ul>
+          {assessmentCriteria.map((criterion) => <li>{criterion}</li>)}
+        </ul>
+        <p class="detail-links">
+          <a href="/programmes/">Explore our programmes</a>
+          <a href="/faq/">Read frequently asked questions</a>
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section welfare-section">
+    <div class="container welfare-grid">
+      <div>
+        <p class="eyebrow">Safeguarding and trust</p>
+        <h2>Player welfare matters</h2>
+        <p>
+          Dante Football Academy is committed to protecting the dignity, safety
+          and wellbeing of young players. Review the relevant policies before
+          submitting information through the official registration process.
+        </p>
+      </div>
+      <nav aria-label="Registration policies">
+        <a href="/safeguarding/">Safeguarding &amp; Child Protection</a>
+        <a href="/privacy/">Privacy Policy</a>
+        <a href="/photography-media/">Photography &amp; Media Policy</a>
+      </nav>
+    </div>
+  </section>
+
+  <section class="registration-cta">
+    <div class="container cta-grid">
+      <div>
+        <p class="eyebrow">Official player registration</p>
+        <h2>Ready to begin?</h2>
+        <p>
+          Complete the official Dante Football Academy registration form to
+          provide your details to the academy. The form opens on an external
+          website.
+        </p>
+      </div>
+      <a
+        class="button button--light"
+        href={site.registrationUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Complete registration using the official external form"
+        >Complete Registration <ArrowUpRight /></a
+      >
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .pathway-list {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    border-top: 1px solid var(--grey-200);
+    border-left: 1px solid var(--grey-200);
+  }
+  .pathway-list article {
+    min-width: 0;
+    padding: 22px 16px;
+    border-right: 1px solid var(--grey-200);
+    border-bottom: 1px solid var(--grey-200);
+  }
+  .pathway-list strong {
+    display: block;
+    color: var(--navy-900);
+    font: 800 clamp(2rem, 4vw, 3rem)/1 'Barlow Condensed';
+  }
+  .pathway-list span {
+    display: block;
+    margin-top: 8px;
+    color: var(--orange-600);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .pathway-list p {
+    margin: 18px 0 0;
+    color: var(--grey-600);
+    font-size: 0.78rem;
+  }
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    border-top: 1px solid var(--grey-600);
+    border-left: 1px solid var(--grey-600);
+  }
+  .process-grid li {
+    min-height: 290px;
+    padding: 28px;
+    border-right: 1px solid var(--grey-600);
+    border-bottom: 1px solid var(--grey-600);
+  }
+  .process-grid span {
+    color: var(--orange-500);
+    font-weight: 800;
+  }
+  .process-grid h3 {
+    margin: 58px 0 14px;
+    font: 700 1.45rem/1 'Barlow Condensed';
+    text-transform: uppercase;
+  }
+  .process-grid p {
+    margin: 0;
+    color: var(--grey-200);
+    font-size: 0.85rem;
+  }
+  .registration-details {
+    background: var(--off-white);
+  }
+  .details-grid,
+  .welfare-grid,
+  .cta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9%;
+    align-items: start;
+  }
+  .details-grid h2,
+  .welfare-grid h2,
+  .registration-cta h2 {
+    margin: 0;
+    color: var(--navy-900);
+    font: 800 clamp(2.7rem, 5vw, 4.5rem)/0.9 'Barlow Condensed';
+    text-transform: uppercase;
+  }
+  .important-info .eyebrow {
+    margin-top: 30px;
+  }
+  .details-grid article > p:not(.eyebrow),
+  .welfare-grid p {
+    color: var(--grey-600);
+  }
+  .assessment-info ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 22px;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--grey-200);
+  }
+  .assessment-info li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--grey-200);
+    font-size: 0.82rem;
+  }
+  .detail-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+  }
+  .detail-links a,
+  .welfare-grid nav a {
+    color: var(--blue-700);
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-color: var(--orange-500);
+    text-underline-offset: 4px;
+  }
+  .welfare-section {
+    background: var(--white);
+  }
+  .welfare-grid {
+    align-items: center;
+  }
+  .welfare-grid nav {
+    display: grid;
+    border-top: 1px solid var(--grey-200);
+  }
+  .welfare-grid nav a {
+    padding: 20px 4px;
+    border-bottom: 1px solid var(--grey-200);
+  }
+  .registration-cta {
+    padding: var(--section-space) 0;
+    background: var(--orange-500);
+    color: var(--white);
+  }
+  .registration-cta h2 {
+    color: var(--white);
+  }
+  .registration-cta .eyebrow {
+    color: var(--navy-950);
+  }
+  .registration-cta p:not(.eyebrow) {
+    max-width: 680px;
+  }
+  .cta-grid {
+    align-items: end;
+  }
+  .cta-grid :global(.button) {
+    justify-self: end;
+  }
+  @media (max-width: 1024px) {
+    .pathway-list {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    .process-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 640px) {
+    .pathway-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .process-grid,
+    .details-grid,
+    .welfare-grid,
+    .cta-grid {
+      grid-template-columns: 1fr;
+    }
+    .process-grid li {
+      min-height: auto;
+    }
+    .process-grid h3 {
+      margin-top: 34px;
+    }
+    .details-grid,
+    .welfare-grid,
+    .cta-grid {
+      gap: 36px;
+    }
+    .assessment-info ul {
+      grid-template-columns: 1fr;
+    }
+    .cta-grid :global(.button),
+    .hero-actions :global(.button) {
+      width: 100%;
+    }
+  }
+</style>
