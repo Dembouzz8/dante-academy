@@ -185,8 +185,156 @@ export const photographyMediaPolicy = {
   ] satisfies readonly PolicySection[],
 } as const;
 
+export const termsPolicy = {
+  title: 'Terms and Conditions',
+  version: '1.0',
+  lastUpdated: 'August 2026',
+  registrationNumber: 'RC 9492050',
+  sections: [
+    {
+      id: 'introduction',
+      title: 'Introduction',
+      paragraphs: [
+        "These Terms and Conditions govern the services, activities and operations of Dante Sports Management and Academy Ltd ('DANTE'). By registering, participating in programmes, using services or engaging with DANTE, participants, parents or guardians, partners and clients agree to these Terms.",
+      ],
+    },
+    {
+      id: 'scope',
+      title: 'Scope',
+      paragraphs: [
+        'These Terms apply to all football, boxing and other sports programmes, scouting, player management, events, camps, trials, education, transport and related services.',
+      ],
+    },
+    {
+      id: 'registration',
+      title: 'Registration',
+      paragraphs: [
+        'All information must be accurate. DANTE may refuse or cancel registration where false information is provided.',
+      ],
+    },
+    {
+      id: 'fees',
+      title: 'Fees',
+      paragraphs: [
+        'Registration fees, training fees and other charges must be paid as agreed. Late payments may result in suspension of services. Fees are generally non-refundable unless required by law or approved by DANTE.',
+      ],
+    },
+    {
+      id: 'code-of-conduct',
+      title: 'Code of Conduct',
+      paragraphs: [
+        'Participants must behave respectfully, follow staff instructions, and avoid violence, discrimination, bullying, doping, substance abuse and misconduct.',
+      ],
+    },
+    {
+      id: 'attendance',
+      title: 'Attendance',
+      paragraphs: [
+        'Participants should attend training punctually and notify the academy of absences where possible.',
+      ],
+    },
+    {
+      id: 'health-and-medical',
+      title: 'Health & Medical',
+      paragraphs: [
+        'Participants must disclose relevant medical conditions. DANTE may require medical clearance. Emergency treatment may be arranged when necessary.',
+      ],
+    },
+    {
+      id: 'safeguarding',
+      title: 'Safeguarding',
+      paragraphs: [
+        'DANTE is committed to safeguarding children and vulnerable persons. Abuse, harassment or exploitation will not be tolerated.',
+      ],
+    },
+    {
+      id: 'photography-and-media',
+      title: 'Photography & Media',
+      paragraphs: [
+        'Photos and videos may be taken for coaching, safeguarding and promotional purposes unless written objection is provided where legally permitted.',
+      ],
+    },
+    {
+      id: 'player-development-and-transfers',
+      title: 'Player Development & Transfers',
+      paragraphs: [
+        'Selection, trials and transfer opportunities are based on merit, performance and applicable FIFA, CAF, NFF and other governing regulations.',
+      ],
+    },
+    {
+      id: 'intellectual-property',
+      title: 'Intellectual Property',
+      paragraphs: [
+        'DANTE logos, documents, branding and educational materials remain the property of DANTE unless otherwise agreed.',
+      ],
+    },
+    {
+      id: 'liability',
+      title: 'Liability',
+      paragraphs: [
+        'Sports involve inherent risks. DANTE will take reasonable safety measures but is not liable for injuries or losses except where caused by negligence or where liability cannot legally be excluded.',
+      ],
+    },
+    {
+      id: 'insurance',
+      title: 'Insurance',
+      paragraphs: [
+        'Participants are encouraged to maintain appropriate medical and accident insurance where available.',
+      ],
+    },
+    {
+      id: 'privacy',
+      title: 'Privacy',
+      paragraphs: [
+        "Personal information will be processed in accordance with applicable privacy and data protection laws and DANTE's Privacy Policy.",
+      ],
+    },
+    {
+      id: 'discipline',
+      title: 'Discipline',
+      paragraphs: [
+        'DANTE may suspend or terminate membership for serious misconduct or repeated breaches of these Terms.',
+      ],
+    },
+    {
+      id: 'force-majeure',
+      title: 'Force Majeure',
+      paragraphs: [
+        'DANTE is not responsible for delays or cancellations caused by events beyond its reasonable control.',
+      ],
+    },
+    {
+      id: 'governing-law',
+      title: 'Governing Law',
+      paragraphs: [
+        'These Terms shall be governed by the laws applicable in the Federal Republic of Nigeria unless otherwise agreed in writing for a specific programme.',
+      ],
+    },
+    {
+      id: 'amendments',
+      title: 'Amendments',
+      paragraphs: [
+        'DANTE may update these Terms from time to time. The latest version will apply from its effective date.',
+      ],
+    },
+    {
+      id: 'contact',
+      title: 'Contact',
+      paragraphs: [],
+    },
+    {
+      id: 'acceptance',
+      title: 'Acceptance of These Terms',
+      paragraphs: [
+        'By completing the official DANTE registration process and confirming acceptance of these Terms, the participant or, where applicable, their parent or legal guardian confirms that they have read and understood these Terms and Conditions.',
+      ],
+    },
+  ] satisfies readonly PolicySection[],
+} as const;
+
 export const policyLinks = [
   { label: 'Safeguarding & Child Protection', href: '/safeguarding/' },
   { label: 'Privacy Policy', href: '/privacy/' },
   { label: 'Photography & Media', href: '/photography-media/' },
+  { label: 'Terms & Conditions', href: '/terms/' },
 ] as const;

@@ -7,8 +7,10 @@ import { site } from '../data/site';
 interface Props {
   title: string;
   description: string;
-  effectiveDate: string;
+  effectiveDate?: string;
   lastUpdated?: string;
+  version?: string;
+  registrationNumber?: string;
   sections: readonly PolicySection[];
   privacyContact?: boolean;
 }
@@ -18,6 +20,8 @@ const {
   description,
   effectiveDate,
   lastUpdated,
+  version,
+  registrationNumber,
   sections,
   privacyContact = false,
 } = Astro.props;
@@ -32,7 +36,30 @@ const {
       </div>
       <dl class="policy-meta">
         <div><dt>Organisation</dt><dd>{site.legalName}</dd></div>
-        <div><dt>Effective date</dt><dd>{effectiveDate}</dd></div>
+        {
+          registrationNumber && (
+            <div>
+              <dt>Registration</dt>
+              <dd>{registrationNumber}</dd>
+            </div>
+          )
+        }
+        {
+          version && (
+            <div>
+              <dt>Version</dt>
+              <dd>{version}</dd>
+            </div>
+          )
+        }
+        {
+          effectiveDate && (
+            <div>
+              <dt>Effective date</dt>
+              <dd>{effectiveDate}</dd>
+            </div>
+          )
+        }
         {
           lastUpdated && (
             <div>
