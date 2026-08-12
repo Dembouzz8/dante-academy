@@ -3,11 +3,25 @@ interface Props {
   href: string;
   variant?: 'primary' | 'outline' | 'light' | 'section';
   class?: string;
+  target?: '_blank';
+  rel?: string;
+  ariaLabel?: string;
 }
 import ArrowUpRight from './shared/ArrowUpRight.astro';
-const { href, variant = 'primary', class: className = '' } = Astro.props;
+const {
+  href,
+  variant = 'primary',
+  class: className = '',
+  target,
+  rel,
+  ariaLabel,
+} = Astro.props;
 ---
 
-<a class:list={['button', `button--${variant}`, className]} href={href}
-  ><slot /><ArrowUpRight /></a
+<a
+  class:list={['button', `button--${variant}`, className]}
+  href={href}
+  target={target}
+  rel={rel}
+  aria-label={ariaLabel}><slot /><ArrowUpRight /></a
 >

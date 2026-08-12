@@ -8,13 +8,13 @@ import FootballMarker from '../../../components/shared/FootballMarker.astro';
 import hero from '../../../assets/images/gallery/recent-event/team-huddle-01.jpg';
 import developmentImage from '../../../assets/images/gallery/recent-event/coach-instruction-02.jpg';
 import communityImage from '../../../assets/images/gallery/recent-event/academy-community-03.jpg';
-import academyLogo from '../../../assets/brand/dante-football-academy.png';
-import { contact } from '../../../data/contact';
+import academyLogo from '../../../assets/brand/dante-football-academy-new.png';
 import { site } from '../../../data/site';
 import {
   communityAmbitions,
   developmentPillars,
   evaluationCriteria,
+  officialAccounts,
   partnershipBenefits,
   partnershipOpportunities,
   partnershipPathway,
@@ -36,7 +36,7 @@ import {
   <section class="identity-strip" aria-label="Organisation details">
     <div class="container identity-inner">
       <div>
-        <Image src={academyLogo} alt="" width={58} height={58} />
+        <Image src={academyLogo} alt="" width={64} height={64} />
         <p><strong>{site.name}</strong><span>Partner with DANTE</span></p>
       </div>
       <p>{site.legalName} <span>|</span> {site.registrationNumber}</p>
@@ -199,21 +199,60 @@ import {
     </div>
   </section>
 
+  <section class="section section--white account-details">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Official account details"
+        title="Support Dante directly"
+        intro="For approved partnership support, sponsorship contributions or direct academy support, the following official account details may be used."
+      />
+      <div class="account-grid">
+        {
+          officialAccounts.map((account) => (
+            <article>
+              <p class="eyebrow">Bank</p>
+              <h3>{account.bank}</h3>
+              <dl>
+                <div>
+                  <dt>Account Name</dt>
+                  <dd>{account.accountName}</dd>
+                </div>
+                <div>
+                  <dt>Account Number</dt>
+                  <dd class="account-number">{account.accountNumber}</dd>
+                </div>
+              </dl>
+            </article>
+          ))
+        }
+      </div>
+      <p class="account-note">
+        All partnership discussions, sponsorship arrangements and support
+        initiatives remain subject to direct engagement with the academy.
+      </p>
+    </div>
+  </section>
+
   <section class="partnership-cta">
     <div class="container cta-grid">
       <div>
-        <p class="eyebrow">Start a conversation</p><h2>
-          Let's build opportunity together.
+        <p class="eyebrow">Partner with Dante</p><h2>
+          Ready to build<br />opportunity together?
         </h2>
       </div>
       <div>
         <p>
-          We welcome appropriate enquiries from sponsors, clubs, scouts,
-          schools, technical organisations and community partners.
+          Complete the official DANTE partnership and sponsorship form to tell
+          us more about your organisation, the type of collaboration you are
+          interested in and how you would like to support the academy.
         </p>
         <div class="cta-actions">
-          <Button href={contact.partnershipEnquiryHref}
-            >Discuss a Partnership</Button
+          <Button
+            href={site.sponsorshipFormUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            ariaLabel="Complete partnership form (opens in a new tab)"
+            >Complete Partnership Form</Button
           >
           <Button href="/contact/" variant="outline">Contact the Academy</Button
           >
@@ -479,6 +518,59 @@ import {
   .text-link--dark {
     color: var(--blue-700);
   }
+  .account-details {
+    border-top: 1px solid var(--grey-200);
+  }
+  .account-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+  .account-grid article {
+    min-width: 0;
+    padding: clamp(26px, 4vw, 42px);
+    border-top: 4px solid var(--orange-500);
+    background: var(--navy-900);
+    color: white;
+  }
+  .account-grid h3 {
+    margin: 8px 0 28px;
+    font: 700 2rem/1 'Barlow Condensed';
+    text-transform: uppercase;
+  }
+  .account-grid dl,
+  .account-grid dd {
+    margin: 0;
+  }
+  .account-grid dl > div {
+    padding-block: 15px;
+    border-top: 1px solid #343a55;
+  }
+  .account-grid dt {
+    margin-bottom: 5px;
+    color: #aeb2c0;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .account-grid dd {
+    overflow-wrap: anywhere;
+    font-size: 0.9rem;
+  }
+  .account-grid .account-number {
+    color: white;
+    font: 700 clamp(1.65rem, 4vw, 2.35rem)/1 'Barlow Condensed';
+    letter-spacing: 0.04em;
+  }
+  .account-note {
+    max-width: 860px;
+    margin: 24px 0 0;
+    padding-left: 18px;
+    border-left: 3px solid var(--orange-500);
+    color: var(--grey-600);
+    font-size: 0.78rem;
+  }
   .partnership-cta {
     padding: var(--section-space) 0;
     background: var(--orange-500);
@@ -535,6 +627,9 @@ import {
     .community-grid,
     .cta-grid,
     .evaluation-block {
+      grid-template-columns: 1fr;
+    }
+    .account-grid {
       grid-template-columns: 1fr;
     }
     .identity-inner {

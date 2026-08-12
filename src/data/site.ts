@@ -5,6 +5,7 @@ export const site = {
   location: 'Ibadan, Oyo State, Nigeria',
   registrationNumber: 'RC 9492050',
   registrationUrl: 'https://tally.so/r/WO6vEJ',
+  sponsorshipFormUrl: 'https://tally.so/r/kdjNpR',
 } as const;
 
 export const whyDante = [

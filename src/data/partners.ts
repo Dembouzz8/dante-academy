@@ -97,3 +97,16 @@ export const communityAmbitions = [
   'Health, education and positive lifestyles',
   'Opportunity and future community leadership',
 ] as const;
+
+export const officialAccounts = [
+  {
+    bank: 'FCMB',
+    accountName: 'Dante Sports Management and Academy',
+    accountNumber: '2009158219',
+  },
+  {
+    bank: 'Moniepoint',
+    accountName: 'Dante Sports Management and Academy',
+    accountNumber: '9051244430',
+  },
+] as const;
