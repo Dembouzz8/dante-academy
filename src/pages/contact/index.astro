@@ -44,12 +44,14 @@ const configuredSocials = Object.entries(socialLinks).filter(([, url]) => url);
       </div>
       <div class="contact-grid">
         {
-          contact.phones.map((phone, index) => (
+          contact.phones.map((phone) => (
             <a class="contact-card" href={phone.href}>
               <ContactIcon name="phone" />
-              <span>{index === 0 ? 'Telephone one' : 'Telephone two'}</span>
+              <span>{phone.label}</span>
               <strong>{phone.display}</strong>
-              <small>Call the Academy</small>
+              <small>
+                {phone.isPrimary ? 'Call the Academy' : 'Alternative number'}
+              </small>
             </a>
           ))
         }
@@ -169,7 +171,10 @@ const configuredSocials = Object.entries(socialLinks).filter(([, url]) => url);
         <h2>Let’s continue the conversation.</h2>
       </div>
       <div class="close-actions">
-        <Button href={contact.phones[0].href} variant="light">
+        <Button
+          href={contact.phones.find((phone) => phone.isPrimary)!.href}
+          variant="light"
+        >
           Call the Academy
         </Button>
         <Button href={contact.emailHref} variant="outline">Send an Email</Button

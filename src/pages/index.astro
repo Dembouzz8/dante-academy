@@ -6,7 +6,7 @@ import SectionHeading from '../components/SectionHeading.astro';
 import VisualPanel from '../components/VisualPanel.astro';
 import FeatureImageCard from '../components/FeatureImageCard.astro';
 import FootballMarker from '../components/shared/FootballMarker.astro';
-import { founderMessage, pathway, whyDante } from '../data/site';
+import { pathway, whyDante } from '../data/site';
 import { programmes } from '../data/programmes';
 import { team } from '../data/team';
 import { homepageImages } from '../data/homepageImages';
@@ -195,15 +195,25 @@ import { homepageImages } from '../data/homepageImages';
         variant="portrait"
         {...homepageImages.director}
       /><div class="message-copy">
-        <p class="eyebrow">From the Founder</p><h2>
-          Building players.<br />Shaping people.
-        </h2>{
-          founderMessage.split('\n\n').map((paragraph) => <p>{paragraph}</p>)
-        }<p class="signature">
+        <p class="eyebrow">Message from the Founder</p><h2>
+          Building talent.<br />Creating opportunity.<br />Shaping futures.
+        </h2><p>
+          At DANTE, we believe every young person deserves the opportunity to
+          dream, grow and succeed. We are building more than footballers. Our
+          purpose is to develop confident, disciplined and responsible young
+          people through football, education, leadership and opportunity.
+        </p><p>
+          Talent may open the door, but character will keep it open. Through
+          purposeful development, strong values and meaningful partnerships, we
+          aim to create pathways that allow young athletes to realise their
+          potential while becoming positive examples within their communities.
+        </p><p class="signature">
           <strong>Dada Iseoluwa Akinoluwa</strong><span
             >Founder &amp; Executive Director</span
           >
-        </p>
+        </p><Button href="/academy/#founder-message" variant="section">
+          Read the Founder’s Message
+        </Button>
       </div>
     </div>
   </section>
@@ -218,43 +228,49 @@ import { homepageImages } from '../data/homepageImages';
         /><Button href="/academy/#team" variant="section">Meet the Team</Button>
       </div><div class="team-grid">
         {
-          team.slice(0, 4).map((member) => (
-            <article>
-              <>
-                <div
-                  class="team-portrait photo-ready"
-                  data-image-slot="leadership"
-                >
-                  {member.image ? (
-                    <Image
-                      src={member.image}
-                      alt={`Portrait of ${member.name}`}
-                      widths={[320, 480, 640]}
-                      sizes="(max-width: 600px) 50vw, (max-width: 900px) 50vw, 25vw"
-                      loading="lazy"
-                      style={`object-position:${member.objectPosition}`}
-                    />
-                  ) : (
-                    <>
-                      <FootballMarker variant="light" />
-                      <b>
-                        {member.name
-                          .split(' ')
-                          .map((word) => word[0])
-                          .slice(0, 2)
-                          .join('')}
-                      </b>
-                    </>
-                  )}
-                  {member.image && (
-                    <span class="dante-diagonal-accent" aria-hidden="true" />
-                  )}
-                </div>
-                <h3>{member.name}</h3>
-                <p>{member.role}</p>
-              </>
-            </article>
-          ))
+          team
+            .filter(
+              (member) =>
+                member.name !== 'Kazeem Kehinde' && member.name !== 'Troger S.',
+            )
+            .slice(0, 4)
+            .map((member) => (
+              <article>
+                <>
+                  <div
+                    class="team-portrait photo-ready"
+                    data-image-slot="leadership"
+                  >
+                    {member.image ? (
+                      <Image
+                        src={member.image}
+                        alt={`Portrait of ${member.name}`}
+                        widths={[320, 480, 640]}
+                        sizes="(max-width: 600px) 50vw, (max-width: 900px) 50vw, 25vw"
+                        loading="lazy"
+                        style={`object-position:${member.objectPosition}`}
+                      />
+                    ) : (
+                      <>
+                        <FootballMarker variant="light" />
+                        <b>
+                          {member.name
+                            .split(' ')
+                            .map((word) => word[0])
+                            .slice(0, 2)
+                            .join('')}
+                        </b>
+                      </>
+                    )}
+                    {member.image && (
+                      <span class="dante-diagonal-accent" aria-hidden="true" />
+                    )}
+                  </div>
+                  <h3>{member.name}</h3>
+                  <p>{member.role}</p>
+                </>
+              </article>
+            ))
         }
       </div>
     </div>

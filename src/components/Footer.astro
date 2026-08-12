@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import corporateLogo from '../assets/brand/dante-logo.png';
+import corporateLogo from '../assets/brand/dantesport-emblem.png';
 import academyLogo from '../assets/brand/dante-football-academy.png';
 import { academyLinks } from '../data/navigation';
 import { contact } from '../data/contact';
@@ -70,7 +70,12 @@ const socials = Object.entries(socialLinks).filter(([, url]) => url);
   }
   <div class="container footer-bottom">
     <div class="footer-company">
-      <Image src={corporateLogo} alt="" width={46} height={46} />
+      <Image
+        src={corporateLogo}
+        alt="Dante Sports Management and Academy Ltd"
+        width={180}
+        height={120}
+      />
       <p>Operated by {site.legalName} | {site.registrationNumber}</p>
     </div><p>
       © {new Date().getFullYear()}

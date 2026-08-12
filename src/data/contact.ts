@@ -8,18 +8,28 @@ export const contact = {
     'Nigeria',
   ],
   phones: [
-    { display: '+234 806 251 7246', href: 'tel:+2348062517246' },
-    { display: '+234 906 743 9197', href: 'tel:+2349067439197' },
+    {
+      display: '+234 906 743 9197',
+      href: 'tel:+2349067439197',
+      label: 'Primary telephone',
+      isPrimary: true,
+    },
+    {
+      display: '+234 806 251 7246',
+      href: 'tel:+2348062517246',
+      label: 'Secondary telephone',
+      isPrimary: false,
+    },
   ],
-  email: 'danteacademy01@gmail.com',
-  emailHref: 'mailto:danteacademy01@gmail.com',
+  email: 'dantesportacademy02@gmail.com',
+  emailHref: 'mailto:dantesportacademy02@gmail.com',
   whatsapp: {
     display: '+31 686 470 414',
     href: 'https://wa.me/31686470414',
   },
   programmeEnquiryHref:
-    'mailto:danteacademy01@gmail.com?subject=Programme%20Enquiry',
+    'mailto:dantesportacademy02@gmail.com?subject=Programme%20Enquiry',
   partnershipEnquiryHref:
-    'mailto:danteacademy01@gmail.com?subject=Partnership%20Enquiry',
+    'mailto:dantesportacademy02@gmail.com?subject=Partnership%20Enquiry',
   directionsUrl: '',
 } as const;

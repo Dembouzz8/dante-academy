@@ -312,9 +312,10 @@ button:focus-visible {
   gap: 12px;
 }
 .footer-company img {
-  width: 42px;
-  height: 42px;
+  width: 180px;
+  height: 120px;
   object-fit: contain;
+  flex: 0 0 auto;
 }
 .visual-panel {
   position: relative;
@@ -495,6 +496,10 @@ button:focus-visible {
   }
   .footer-bottom {
     flex-direction: column;
+  }
+  .footer-company img {
+    width: 138px;
+    height: 92px;
   }
   .visual-panel {
     min-height: 330px;
