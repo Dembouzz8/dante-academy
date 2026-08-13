@@ -1,6 +1,6 @@
 import type { ImageMetadata } from 'astro';
-import hero from '../assets/images/gallery/recent-event/training-action-10.jpg';
-import potentialToProgression from '../assets/images/gallery/recent-event/coach-instruction-02.jpg';
+import hero from '../assets/images/gallery/official-academy/official-sprint-drill.jpg';
+import potentialToProgression from '../assets/images/gallery/official-academy/official-coach-instruction.jpg';
 import trainingGround from '../assets/images/gallery/recent-event/training-ground.jpg';
 import behindTheGame from '../assets/images/gallery/recent-event/behind-the-game.jpg';
 import moreThanFootball from '../assets/images/academy/more-than-football.jpg';
@@ -13,7 +13,7 @@ export type HomepageImage = {
 };
 
 export const homepageImages = {
-  hero: { image: hero, alt: '', objectPosition: '50% 48%' },
+  hero: { image: hero, alt: '', objectPosition: '58% 48%' },
   academyIntroduction: {
     image: moreThanFootball,
     alt: 'Academy players taking part in a structured training session',
@@ -22,7 +22,7 @@ export const homepageImages = {
   pathway: {
     image: potentialToProgression,
     alt: 'A player progressing through a focused academy training session',
-    objectPosition: '50% center',
+    objectPosition: '51% 52%',
   },
   insideDante: [
     {

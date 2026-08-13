@@ -1,8 +1,8 @@
-import youthImage from '../assets/images/gallery/recent-event/team-warmup-02.jpg';
-import juniorImage from '../assets/images/programmes/development.jpg';
-import academyImage from '../assets/images/programmes/elite.jpg';
-import transitionImage from '../assets/images/gallery/recent-event/training-action-10.jpg';
-import seniorImage from '../assets/images/gallery/recent-event/training-action-07.jpg';
+import youthImage from '../assets/images/gallery/official-academy/official-squad-group-01.jpg';
+import juniorImage from '../assets/images/gallery/official-academy/official-ball-control.jpg';
+import academyImage from '../assets/images/gallery/official-academy/official-player-dribbling.jpg';
+import transitionImage from '../assets/images/gallery/official-academy/official-sprint-drill.jpg';
+import seniorImage from '../assets/images/gallery/official-academy/official-coach-demonstration.jpg';
 import playerWelfareImage from '../assets/images/programmes/player-welfare.jpg';
 
 export const programmes = [
@@ -16,7 +16,7 @@ export const programmes = [
     image: youthImage,
     imageAlt:
       'Young Dante players developing their football skills during training',
-    objectPosition: '50% 48%',
+    objectPosition: '50% 43%',
     description:
       'Young players build strong foundations in technique, coordination, confidence and understanding of the game.',
     outcomes: [
@@ -33,7 +33,7 @@ export const programmes = [
     squads: [{ squad: 'U13', ages: 'Age 12 to 13' }],
     image: juniorImage,
     imageAlt: 'Dante junior players applying their learning in a training game',
-    objectPosition: '50% 42%',
+    objectPosition: '55% 55%',
     description:
       'Players strengthen technical habits, decision making, teamwork and their understanding of the game.',
     outcomes: [
@@ -54,7 +54,7 @@ export const programmes = [
     image: academyImage,
     imageAlt:
       'Dante academy players competing for the football during an intense session',
-    objectPosition: '50% 40%',
+    objectPosition: '68% 58%',
     description:
       'Players develop stronger technical, tactical, physical and personal standards for competitive football.',
     outcomes: [
@@ -72,7 +72,7 @@ export const programmes = [
     image: transitionImage,
     imageAlt:
       'Dante players applying their development during competitive football activity',
-    objectPosition: '50% 48%',
+    objectPosition: '58% 48%',
     description:
       'Players prepare for appropriate next steps through advanced development, responsibility and competitive application.',
     outcomes: [
@@ -90,7 +90,7 @@ export const programmes = [
     image: seniorImage,
     imageAlt:
       'Dante senior players working together during football development',
-    objectPosition: '50% 45%',
+    objectPosition: '52% 42%',
     description:
       'Senior players continue purposeful development towards appropriate competitive opportunities.',
     outcomes: [
