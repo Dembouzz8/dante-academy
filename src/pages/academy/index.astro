@@ -57,28 +57,30 @@ import { team } from '../../data/team';
   </section>
 
   <section class="section director-section" id="founder-message">
-    <div class="container director-grid">
-      <VisualPanel
-        label="Leadership with purpose"
-        variant="portrait"
-        image={directorImage}
-        alt="Dada Iseoluwa Akinoluwa, Founder and Executive Director of Dante Football Academy"
-        objectPosition="50% 42%"
-      /><div>
-        <SectionHeading
-          eyebrow="Founder’s message"
-          title="Building players. Shaping people."
-        />{
-          academyContent.founderMessage
-            .split('\n\n')
-            .map((paragraph) => <p>{paragraph}</p>)
-        }<div class="signature">
-          <strong>Dada Iseoluwa Akinoluwa</strong><span
-            >Chief Executive Officer (CEO)</span
-          ><span>Dante Sports Management and Academy Ltd (DSMA)</span>
-        </div>
+    <article class="container founder-letter">
+      <SectionHeading
+        eyebrow="Founder’s message"
+        title="Building players. Shaping people."
+      />
+      <div class="founder-photo">
+        <VisualPanel
+          label="Leadership with purpose"
+          variant="portrait"
+          image={directorImage}
+          alt="Dada Iseoluwa Akinoluwa, Founder and Executive Director of Dante Football Academy"
+          objectPosition="50% 42%"
+        />
       </div>
-    </div>
+      {
+        academyContent.founderMessage
+          .split('\n\n')
+          .map((paragraph) => <p>{paragraph}</p>)
+      }<div class="signature">
+        <strong>Dada Iseoluwa Akinoluwa</strong><span
+          >Chief Executive Officer (CEO)</span
+        ><span>Dante Sports Management and Academy Ltd (DSMA)</span>
+      </div>
+    </article>
   </section>
 
   <section class="section section--navy">
@@ -302,7 +304,6 @@ import { team } from '../../data/team';
     scroll-margin-top: 24px;
   }
   .story-grid,
-  .director-grid,
   .philosophy-grid,
   .welfare-grid,
   .framework-grid,
@@ -398,15 +399,21 @@ import { team } from '../../data/team';
   .director-section {
     background: #e8e6e0;
   }
-  .director-grid > .visual-panel {
+  .founder-photo {
+    float: left;
+    width: 41%;
+    margin: 0 clamp(28px, 4vw, 54px) 32px 0;
+  }
+  .founder-photo :global(.visual-panel) {
     aspect-ratio: 4/5;
     min-height: 0;
   }
-  .director-grid p {
+  .founder-letter p {
     color: #4f5462;
     font-size: 0.92rem;
   }
   .signature {
+    clear: both;
     margin-top: 28px;
     padding-left: 17px;
     border-left: 3px solid var(--orange-500);
@@ -607,7 +614,6 @@ import { team } from '../../data/team';
   }
   @media (max-width: 900px) {
     .story-grid,
-    .director-grid,
     .philosophy-grid,
     .framework-grid,
     .scouting-grid,
@@ -644,9 +650,15 @@ import { team } from '../../data/team';
       margin-left: 0;
     }
   }
+  @media (max-width: 768px) {
+    .founder-photo {
+      float: none;
+      width: 100%;
+      margin: 0 0 32px;
+    }
+  }
   @media (max-width: 640px) {
     .story-grid,
-    .director-grid,
     .philosophy-grid,
     .framework-grid,
     .scouting-grid,
@@ -667,9 +679,6 @@ import { team } from '../../data/team';
     .story-grid > .visual-panel,
     .philosophy-grid > .visual-panel {
       min-height: 450px;
-    }
-    .director-grid > .visual-panel {
-      order: 2;
     }
     .mission-grid {
       grid-template-columns: 1fr;
