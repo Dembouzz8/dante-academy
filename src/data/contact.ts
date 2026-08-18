@@ -33,3 +33,8 @@ export const contact = {
     'mailto:dantesportacademy02@gmail.com?subject=Partnership%20Enquiry',
   directionsUrl: '',
 } as const;
+
+export const privacyLegalContact = {
+  email: 'danteacademy01@gmail.com',
+  emailHref: 'mailto:danteacademy01@gmail.com',
+} as const;

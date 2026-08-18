@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import type { PolicySection } from '../data/policies';
-import { contact } from '../data/contact';
+import { contact, privacyLegalContact } from '../data/contact';
 import { site } from '../data/site';
 
 interface Props {
@@ -12,7 +12,7 @@ interface Props {
   version?: string;
   registrationNumber?: string;
   sections: readonly PolicySection[];
-  privacyContact?: boolean;
+  contactLabel?: string;
 }
 
 const {
@@ -23,8 +23,9 @@ const {
   version,
   registrationNumber,
   sections,
-  privacyContact = false,
+  contactLabel,
 } = Astro.props;
+const policyContact = contactLabel ? privacyLegalContact : contact;
 ---
 
 <BaseLayout title={`${title} | ${site.name}`} description={description}>
@@ -101,10 +102,10 @@ const {
             ))}
             {section.id === 'contact' && (
               <address>
-                {privacyContact && <strong>Privacy Officer</strong>}
+                {contactLabel && <strong>{contactLabel}</strong>}
                 <strong>{site.legalName}</strong>
                 <span>{site.location}</span>
-                <a href={contact.emailHref}>{contact.email}</a>
+                <a href={policyContact.emailHref}>{policyContact.email}</a>
               </address>
             )}
           </section>
