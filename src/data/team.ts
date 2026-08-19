@@ -5,7 +5,7 @@ import kazeemKehinde from '../assets/images/team/kazeem-kehinde.jpeg';
 import trogerS from '../assets/images/team/troger-s.jpeg';
 import salamiGrace from '../assets/images/team/salami-grace.jpg';
 import adetokunboRichard from '../assets/images/team/adetokunbo-richard.png';
-import joshuaDavid from '../assets/images/team/joshua-david.jpeg';
+import mckoolsOpeyemi from '../assets/images/team/mckools-opeyemi.jpeg';
 import azeezIbrahim from '../assets/images/team/azeez-ibrahim.jpg';
 
 export const team = [
@@ -52,10 +52,10 @@ export const team = [
     objectPosition: '50% 28%',
   },
   {
-    name: 'Joshua David (mACS, GMICCON)',
-    role: 'Director, Marketing, Media and Communications',
-    image: joshuaDavid,
-    objectPosition: '50% 28%',
+    name: 'Mckools Opeyemi',
+    role: 'Safeguarding and Discipline Officer',
+    image: mckoolsOpeyemi,
+    objectPosition: '50% 45%',
   },
   {
     name: 'Azeez Ibrahim',
