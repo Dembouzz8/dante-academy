@@ -99,7 +99,7 @@ button {
   min-height: 52px;
   padding: 13px 24px;
   background: var(--orange-500);
-  color: white;
+  color: var(--navy-950);
   font-size: 0.76rem;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -135,18 +135,18 @@ button {
   padding-inline: 26px;
   background: var(--orange-500);
   border-color: var(--orange-500);
-  color: var(--white);
+  color: var(--navy-950);
 }
 .button--section:hover {
   background: var(--orange-600);
   border-color: var(--orange-600);
-  color: var(--white);
+  color: var(--navy-950);
   transform: translateY(-1px);
 }
 .button--section:focus-visible {
   background: var(--orange-500);
   border-color: var(--orange-500);
-  color: var(--white);
+  color: var(--navy-950);
 }
 .button:focus-visible,
 a:focus-visible,
@@ -506,6 +506,7 @@ button:focus-visible {
   }
   .footer-bottom {
     flex-direction: column;
+    padding-bottom: 82px;
   }
   .footer-company img {
     width: 138px;

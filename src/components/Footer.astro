@@ -77,9 +77,6 @@ const socials = Object.entries(socialLinks).filter(([, url]) => url);
         height={120}
       />
       <p>Operated by {site.legalName} | {site.registrationNumber}</p>
-    </div><p>
-      © {new Date().getFullYear()}
-      {site.name}
-    </p>
+    </div><p>© {new Date().getFullYear()}{' '}{site.name}</p>
   </div>
 </footer>

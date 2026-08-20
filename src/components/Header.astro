@@ -4,6 +4,8 @@ import logo from '../assets/brand/dante-football-academy-new.png';
 import { navigation } from '../data/navigation';
 import Button from './Button.astro';
 const path = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === '/' ? path === href : path.startsWith(href);
 ---
 
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -22,7 +24,11 @@ const path = Astro.url.pathname;
     <nav class="desktop-nav" aria-label="Primary navigation">
       {
         navigation.map((item) => (
-          <a class:list={{ active: path === item.href }} href={item.href}>
+          <a
+            class:list={{ active: isActive(item.href) }}
+            href={item.href}
+            aria-current={isActive(item.href) ? 'page' : undefined}
+          >
             {item.label}
           </a>
         ))
@@ -47,7 +53,11 @@ const path = Astro.url.pathname;
   >
     {
       navigation.map((item) => (
-        <a class:list={{ active: path === item.href }} href={item.href}>
+        <a
+          class:list={{ active: isActive(item.href) }}
+          href={item.href}
+          aria-current={isActive(item.href) ? 'page' : undefined}
+        >
           {item.label}
         </a>
       ))
@@ -59,10 +69,24 @@ const path = Astro.url.pathname;
   const header = document.querySelector('[data-header]');
   const button = header?.querySelector<HTMLButtonElement>('.menu-toggle');
   const menu = header?.querySelector<HTMLElement>('#mobile-menu');
+
+  const closeMenu = () => {
+    if (!button || !menu || menu.hidden) return;
+    button.setAttribute('aria-expanded', 'false');
+    button.setAttribute('aria-label', 'Open menu');
+    menu.hidden = true;
+  };
+
   button?.addEventListener('click', () => {
     const open = button.getAttribute('aria-expanded') === 'true';
     button.setAttribute('aria-expanded', String(!open));
     button.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
     if (menu) menu.hidden = open;
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape' || menu?.hidden) return;
+    closeMenu();
+    button?.focus();
   });
 </script>
