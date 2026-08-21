@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dantesportsacademy.com/sitemap-index.xml

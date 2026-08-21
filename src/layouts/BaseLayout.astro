@@ -4,12 +4,23 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppButton from '../components/shared/WhatsAppButton.astro';
 import academyLogo from '../assets/brand/dante-football-academy-new.png';
+import defaultSocialImage from '../assets/images/gallery/official-academy/official-sprint-drill.jpg';
 interface Props {
   title: string;
   description: string;
   robots?: string;
+  canonical?: boolean;
 }
-const { title, description, robots } = Astro.props;
+const { title, description, robots, canonical = true } = Astro.props;
+const site = Astro.site;
+
+if (!site) {
+  throw new Error('The production site URL must be configured in Astro.');
+}
+
+const canonicalUrl = canonical ? new URL(Astro.url.pathname, site) : undefined;
+const socialImageUrl = new URL(defaultSocialImage.src, site);
+const sitemapUrl = new URL('sitemap-index.xml', site);
 ---
 
 <!doctype html>
@@ -21,7 +32,19 @@ const { title, description, robots } = Astro.props;
     {robots && <meta name="robots" content={robots} />}
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" href={academyLogo.src} type="image/png" />
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+    <link rel="sitemap" href={sitemapUrl} />
     <title>{title}</title>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+    <meta property="og:site_name" content="Dante Football Academy" />
+    <meta property="og:image" content={socialImageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImageUrl} />
   </head>
   <body>
     <Header />
